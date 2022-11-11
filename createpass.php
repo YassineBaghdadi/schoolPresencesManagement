@@ -1,12 +1,12 @@
 <?php
 // echo "string";
 
-// include("assets/php/config.php" );
+include("assets/php/config.php" );
 
 $conn = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_name);
-// mysql_close($link);
-
-// mysqli_query($conn, 'update Users set psswrd = "'.password_hash("1234", PASSWORD_DEFAULT).'" where id = 1');
+$psswrd = '1234';
+$cGFzc3dvcmQ = substr(hash('ripemd128', $psswrd), -14, -9).'P@$$W0RD'.substr(hash('md5', $psswrd), 0, 6).'H@$#3D8Y@$$1N3B@94D@D1'.substr(hash('sha256', $psswrd), 5, 15);
+mysqli_query($conn, 'update Users set psswrd = "'.$cGFzc3dvcmQ.'" where id = 1');
 //
-// echo "DONE";
+echo "DONE";
  ?>
