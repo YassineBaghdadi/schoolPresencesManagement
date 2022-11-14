@@ -1,0 +1,160 @@
+<div class="container-fluid">
+		<div class="row">
+
+				<div class="col-lg-6 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-danger text-center">
+																<i class="ti-face-sad"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p> Total des Absences</p>
+																22
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="col-lg-6 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-warning text-center">
+																<i class="ti-alarm-clock"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p>Total des Retards</p>
+																31
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+
+		</div>
+
+ <!--Début Tableau--->
+ <div class="row">
+		<div class="col-md-12">
+				<div class="card">
+						<div class="header">
+								<h4 class="title">Liste des absences et retards</h4>
+						</div>
+						<hr />
+						<div class="row text-center ">
+								<div class="col-md-4 text-center">
+										<input type="date" id="datefiltre1" name="datefiltre1" placeholder="" class="card">
+								</div>
+								<div class="col-md-4 text-center">
+										<input type="date" id="datefiltre1" name="datefiltre2" placeholder="" class="card">
+								</div>
+
+								<div class="col-md-4 text-center">
+										<div class="text-center">
+												<button type="submit"  class="btn btn-info ">Appliquer</button>
+										</div>
+								</div>
+						</div>
+
+
+						<br>
+						<div class="row">
+								<div class="col-12 col-md-4 text-center">
+										<i class="ti-filter"></i>
+										<select class="card" id="Filieres" name="Filieres">
+												<option>Tous les Filières</option>
+												<option>Équitation</option>
+												<option>Nutrition des cheveux</option>
+												<option>Filiere1</option>
+												<option>Filiere2</option>
+											</select>
+								</div>
+								<div class="col-12 col-md-4 text-center">
+										<select class="card" id="Groupes" name="Groupes">
+												<option>Tous les Groupes</option>
+												<option>Groupe A</option>
+												<option>Groupe B</option>
+												<option>Groupe C</option>
+											</select>
+								</div>
+
+
+								<div class="col-12 col-md-4 text-center">
+										<select class="card" id="Groupes" name="Groupes">
+												<option>Tous</option>
+												<option>Retards</option>
+												<option>Absences</option>>
+											</select>
+								</div>
+								<br>
+						</div>
+
+						<div class="content table-responsive table-full-width">
+
+								<table class="table table-striped">
+										<thead>
+												<th>Stagiaire</th>
+												<th>Filière</th>
+												<th>Groupe</th>
+												<th>Date</th>
+												<th>Séance</th>
+												<th>Type</th>
+												<th>Signalé Par</th>
+										</thead>
+										<tbody>
+												<tr>
+														<td>BOURIR Karim</td>
+														<td>Équitation</td>
+														<td>A</td>
+														<td>08/11/2022</td>
+														<td>08:30-11:30</td>
+														<td>Absence</td>
+														<td>Mohamed MOHAMED</td>
+														<td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
+												</tr>
+
+												<tr>
+														<td>Faris Bensoussa</td>
+														<td>Nutrition des cheveux</td>
+														<td>A</td>
+														<td>08/11/2022</td>
+														<td>10:30-11:30</td>
+														<td>Retard</td>
+														<td>Soumia SNOUSSI</td>
+														<td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
+
+												</tr>
+												<tr>
+														<td>Najat Darouche</td>
+														<td>Équitation</td>
+														<td>D</td>
+														<td>11/11/2022</td>
+														<td>11:30-13:30</td>
+														<td>Absence</td>
+														<td>Abdelatif NADIF</td>
+														<td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
+
+												</tr>
+
+
+										</tbody>
+								</table>
+
+						</div>
+				</div>
+		</div>
+
+
+		</div>
+ <!--FIN Tableau--->
+
+</div>

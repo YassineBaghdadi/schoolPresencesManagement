@@ -1,0 +1,240 @@
+<div class="container-fluid">
+<div class="row">
+		<div class="col-lg-12 col-sm-12">
+				<div class="card">
+						<div class="header">
+								<h4 class="title">Groupes</h4>
+						</div>
+						<div class="content">
+										<div class="row">
+												<div class="col-lg-6 col-sm-12">
+														<label>Nom Groupe * </label>
+														<input name="NMG" Id="NMG" type="text" class="form-control border-input" value="">
+												</div>
+
+												<div class="col-lg-6 col-sm-12">
+														<label>Filières  * </label>
+														<select class="form-control border-input" id="Filieres" name="Filieres">
+																<option></option>
+																<option>Équitation</option>
+																<option>Nutrition des cheveux</option>
+																<option>Filiere1</option>
+																<option>Filiere2</option>
+															</select>
+												</div>
+										</div>
+								<div class="footer">
+										<hr />
+										<div class="stats">
+												<div class="col-xs-10">
+														<div class="numbers">
+																<button type="submit" class="btn btn-success btn-fill btn-wd">Ajouter</button>
+														</div>
+												</div>
+										</div>
+								</div>
+								<hr />
+								<div class="content table-responsive table-full-width">
+
+										<table class="table table-striped">
+												<thead>
+														<th>Nom Groupe</th>
+														<th>Filiere</th>
+														<th>Nombre des stagiaires</th>
+														<th>Nombre des Matiérers</th>
+												</thead>
+												<tbody>
+														<tr>
+																<td>Grpupe-A</td>
+																<td>Équitation</td>
+																<td>20</td>
+																<td>1</td>
+																<td><button type="submit" class="btn btn-info btn-fill btn-wd">Gérer les stagiaires</button></td>
+																<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Modifier</button></td>
+																<td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+														</tr>
+														<tr>
+																<td>Grpupe-B</td>
+																<td>Équitation</td>
+																<td>20</td>
+																<td>3</td>
+																<td><button type="submit" class="btn btn-info btn-fill btn-wd">Gérer les stagiaires</button></td>
+																<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Modifier</button></td>
+																<td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+														</tr>
+														<tr>
+																<td>Grpupe-C</td>
+																<td>Nutrition des cheveux</td>
+																<td>20</td>
+																<td>5</td>
+																<td><button type="submit" class="btn btn-info btn-fill btn-wd">Gérer les stagiaires</button></td>
+																<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Modifier</button></td>
+																<td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+														</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+</div>
+<div class="content">
+		<div class="container-fluid">
+				<div class="row">
+						<div class="col-lg-6 col-sm-6">
+								<div class="card">
+
+										<div class="content">
+
+												<div class="content table-responsive table-full-width">
+														<div class="header">
+																<h4 class="title">Liste des Stagaires qui ne sont affectés a aucun GROUPE</h4>
+														</div>
+														<hr/>
+														<table class="table table-striped">
+																<thead>
+																		<th>Stagaires</th>
+																		<th>Filière</th>
+																		<th>Associer</th>
+																</thead>
+																<tbody>
+																		<tr>
+																				<td>Najat Darouche</td>
+																				<td>Équitation</td>
+																				<td><button type="submit" class="btn btn-success btn-fill btn-wd">Associer</button></td>
+																		</tr>
+																</tbody>
+														</table>
+												</div>
+												<div class="footer">
+														<hr />
+														<div class="stats">
+																<i class="ti-plus"></i>Stagaires ne  affectés
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+
+						<div class="col-lg-6 col-sm-6">
+								<div class="card">
+										<div class="content">
+												<div class="content table-responsive table-full-width">
+
+														<div class="header">
+																<h4 class="title">Liste des Stagaires déja affectés  pour le  GROUPE-A </h4>
+														</div>
+														<hr/>
+
+														<table class="table table-striped">
+																<thead>
+																		<th>Stagaires</th>
+																		<th>Filière</th>
+																		<th>Dissocier</th>
+																</thead>
+																<tbody>
+																		<tr>
+																				<td>Bourir Karim</td>
+																				<td>Nutrition des cheveux</td>
+																				<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
+																		</tr>
+																		<tr>
+																				<td>Karim Karim</td>
+																				<td>Nutrition des cheveux</td>
+																				<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
+																		</tr>
+																		<tr>
+																				<td>Yassine Karim</td>
+																				<td>Nutrition des cheveux</td>
+																				<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
+																		</tr>
+																		<tr>
+																				<td>Faris Bensoussa</td>
+																				<td>Nutrition des cheveux</td>
+																				<td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
+																		</tr>
+																</tbody>
+														</table>
+												</div>
+												<div class="footer">
+														<hr />
+														<div class="stats">
+																<i class="ti-bookmark"></i>Liste des Stagaires déja affectés au GROUPE-A
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+
+
+		 <!--Début Tableau
+		 <div class="row">
+				<div class="col-md-12">
+						<div class="card">
+
+										<br>
+								<div class="content table-responsive table-full-width">
+
+										<table class="table table-striped">
+												<thead>
+														<th>Nom Prénom</th>
+														<th>Filière</th>
+														<th>Groupe</th>
+														<th>Séance</th>
+														<th>État</th>
+														<th>Signalé Par</th>
+														<th>Billet</th>
+														<th>Stagiaire</th>
+												</thead>
+												<tbody>
+														<tr>
+																<td>BOURIR Karim</td>
+																<td>Équitation</td>
+																<td>A</td>
+																<td>08:30-11:30</td>
+																<td>Absence</td>
+																<td>Mohamed MOHAMED</td>
+																<td><button type="submit" class="btn btn-success">Billet</button></td>
+																<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+														</tr>
+
+														<tr>
+																<td>Faris Bensoussa</td>
+																<td>Nutrition des cheveux</td>
+																<td>A</td>
+																<td>08:30-11:30</td>
+																<td>Retard</td>
+																<td>Soumia SNOUSSI</td>
+																<td><button type="submit" class="btn btn-success">Billet</button></td>
+																<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+														</tr>
+														<tr>
+																<td>Najat Darouche</td>
+																<td>Équitation</td>
+																<td>D</td>
+																<td>11:30-13:30</td>
+																<td>Absence</td>
+																<td>Abdelatif NADIF</td>
+																<td><button type="submit" class="btn btn-success">Billet</button></td>
+																<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+														</tr>
+
+
+												</tbody>
+										</table>
+
+								</div>
+						</div>
+				</div>
+
+
+				</div>--->
+		 <!--FIN Tableau--->
+
+		</div>
+</div>

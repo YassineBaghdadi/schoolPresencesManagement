@@ -1,0 +1,210 @@
+<div class="container-fluid">
+		<div class="row">
+				<div class="col-lg-3 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-info text-center">
+																<i class="ti-check-box"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p>Total</p>
+															 112
+														</div>
+												</div>
+										</div>
+										<div class="footer">
+												<hr />
+												<div class="stats">
+														<i class="ti-calendar"></i> vendredi 11 Novembre 2022
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-danger text-center">
+																<i class="ti-face-sad"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p>Absences</p>
+																3
+														</div>
+												</div>
+										</div>
+										<div class="footer">
+												<hr />
+												<div class="stats">
+														<i class="ti-calendar"></i> Vendredi 11 Novembre 2022
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-warning text-center">
+																<i class="ti-alarm-clock"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p>Les Retards</p>
+																23
+														</div>
+												</div>
+										</div>
+										<div class="footer">
+												<hr />
+												<div class="stats">
+														<i class="ti-timer"></i> Vendredi 11 Novembre 2022
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+						<div class="card">
+								<div class="content">
+										<div class="row">
+												<div class="col-xs-5">
+														<div class="icon-big icon-success text-center">
+																<i class="ti-face-smile"></i>
+														</div>
+												</div>
+												<div class="col-xs-7">
+														<div class="numbers">
+																<p>Présents</p>
+																86
+														</div>
+												</div>
+										</div>
+										<div class="footer">
+												<hr />
+												<div class="stats">
+														<i class="ti-calendar"></i> Vendredi 11 Novembre 2022
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+
+
+
+ <!--Début Tableau--->
+ <div class="row">
+		<div class="col-md-12">
+				<div class="card">
+						<div class="header">
+								<h4 class="title">Liste des absences et retards Non justifier</h4>
+						</div>
+
+						<br>
+								<div class="col-12 col-md-3 text-center">
+										<i class="ti-filter"></i>
+										<select class="card" id="Filieres" name="Filieres">
+												<option>Tous les Filières</option>
+												<option>Équitation</option>
+												<option>Nutrition des cheveux</option>
+												<option>Filiere1</option>
+												<option>Filiere2</option>
+											</select>
+								</div>
+								<div class="col-12 col-md-3 text-center">
+										<i class="ti-filter"></i>
+										<select class="card" id="Groupes" name="Groupes">
+												<option>Tous les Groupes</option>
+												<option>Groupe A</option>
+												<option>Groupe B</option>
+												<option>Groupe C</option>
+											</select>
+								</div>
+								<div class="col-md-4 text-center">
+										<i class="ti-search"></i>
+										<input type="text" id="AdresseAssur" name="datefiltre" placeholder="" class="card">
+								</div>
+
+								<div class="col-md-2">
+										<div class="text-center">
+												<button type="submit" class="btn btn-info ">Chercher</button>
+										</div>
+								</div>
+
+								<br>
+
+
+						<div class="content table-responsive table-full-width">
+
+								<table class="table table-striped">
+										<thead>
+												<th>Nom Prénom</th>
+												<th>Filière</th>
+												<th>Groupe</th>
+												<th>Séance</th>
+												<th>État</th>
+												<th>Signalé Par</th>
+												<th>Billet</th>
+												<th>Stagiaire</th>
+										</thead>
+										<tbody>
+												<tr>
+														<td>BOURIR Karim</td>
+														<td>Équitation</td>
+														<td>A</td>
+														<td>08:30-11:30</td>
+														<td>Absence</td>
+														<td>Mohamed MOHAMED</td>
+														<td><button type="submit" class="btn btn-success">Billet</button></td>
+														<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+												</tr>
+
+												<tr>
+														<td>Faris Bensoussa</td>
+														<td>Nutrition des cheveux</td>
+														<td>A</td>
+														<td>08:30-11:30</td>
+														<td>Retard</td>
+														<td>Soumia SNOUSSI</td>
+														<td><button type="submit" class="btn btn-success">Billet</button></td>
+														<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+												</tr>
+												<tr>
+														<td>Najat Darouche</td>
+														<td>Équitation</td>
+														<td>D</td>
+														<td>11:30-13:30</td>
+														<td>Absence</td>
+														<td>Abdelatif NADIF</td>
+														<td><button type="submit" class="btn btn-success">Billet</button></td>
+														<td><button type="submit" class="btn btn-info">Détails</button></td>
+
+												</tr>
+
+
+										</tbody>
+								</table>
+
+						</div>
+				</div>
+		</div>
+
+
+		</div>
+ <!--FIN Tableau--->
+
+</div>
