@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>INC-Administration</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="sidebar" data-background-color="white" data-active-color="success">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="" class="simple-text">
+                    <img  src="assets/img/inc-logo.png" alt="..."/>
+                </a>
+            </div>
+
+            <ul class="nav">
+               
+                <li class="">
+                    <a href="dashboard.html">
+                        <i class="ti-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                    <li class="">
+                        <a href="Encadrants.html">
+                            <i class="ti-briefcase"></i>
+                            <p>Les encadrants</p>
+                        </a>
+                    </li>
+
+                <li class="">
+                    <a href="Filiere.html">
+                        <i class="ti-folder"></i>
+                        <p>Filières </p>
+                    </a>
+                </li>
+                
+                <li class="">
+                    <a href="Groupe.html">
+                        <i class="ti-bookmark"></i>
+                        <p>Groupes</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="Stagiaires.html">
+                        <i class="ti-face-smile"></i>
+                        <p>Stagiaires</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="EmploiDuTemps.html">
+                        <i class="ti-time"></i>
+                        <p>Emploi du temps</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="AbsencesRetards.html">
+                        <i class="ti-thumb-down"></i>
+                        <p>Abcences et retard</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="Administration.html">
+                        <i class="ti-crown"></i>
+                        <p>Administration</p>
+                    </a>
+                </li>   
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Administration</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown">
+                                  <i class="ti-user"></i>
+                                  <p>Mr.Redouane Ramiz</p>
+                                  <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="MonProfil.html active">Modifier Mon Profile</a></li>
+                                <li><a href="index.html">Déconnexion</a></li>
+                            
+                            </ul>
+                      </li>
+						
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <!--Début Tableau--->   
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4>Ajouter un nouveau membre de l'administration</h4>
+                            <form>
+                            <div class="row">
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Nom *</label>
+                               <input  name="Nom" Id="Nom" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Prénom * </label>
+                                <input name="Prenom" Id="Prenom" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Téléphone *</label>
+                                <input name="Telephone" Id="Telephone" type="tel" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Email * </label>
+                                <input name="Email" Id="Email" type="email" class="form-control border-input" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Poste *</label>
+                                <select class="form-control border-input" id="Profil" name="Profil">
+                                    <option></option>
+                                    <option>Directeur</option>
+                                    <option>Surveillant général</option>
+                                    <option>Assistant(e)</option>
+                                    <option>Surveillant général de l'internat</option>
+                                  </select>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Nom d'utilisateurs *</label>
+                                <input name="UserName" Id="UserName" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Mot de passe * </label>
+                                <input name="passe" Id="passe" type="password" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Confirmation Mot de passe *</label>
+                                <input name="cpasse" Id="cpasse" type="password" class="form-control border-input" value="">
+                            </div>
+                        </div>
+                        <br>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
+                                </div>
+                             </div>
+                        </form>
+                    </div>
+                   
+                        <hr/>
+                        <div class="content table-responsive table-full-width">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Nom encadrant</th>
+                                    <th>Téléphone</th>
+                                    <th>Email</th>
+                                    <th>Poste</th>
+                                    <th>Nom d'utilisateurs</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Redouane RAMIZ</td>
+                                        <td>0600000000</td>
+                                        <td>redouaneramiz@gmail.com</td>
+                                        <td>Surveillant général</td>
+                                        <td>r.ramiz</td>
+                                        <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                        <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+             <!--FIN Tableau--->
+
+             <div class="content">
+                <div class="container-fluid">
+                    <!--Début Tableau--->   
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4>Régles de gestion des points de discipline</h4>
+                                <form>
+                                <div class="row">
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Type</label>
+                                    <select class="form-control border-input" id="Type" name="Type">
+                                        <option></option>
+                                        <option>Absence</option>
+                                        <option>retard</option>
+                                      </select>
+                                </div>
+                                
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Nombre Absence/Retard</label>
+                                    <input name="NBRAbsenceRetard" Id="NBRAbsenceRetard" type="number" class="form-control border-input" value="">
+                                </div>
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Justification</label>
+                                    <select class="form-control border-input" id="Justification" name="Justification">
+                                        <option></option>
+                                        <option>Justifier</option>
+                                        <option>Non-Justifier</option>
+                                      </select>
+                                </div>
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Nombre des points a déduire</label>
+                                    <input name="NBRPOINTS" Id="NBRPOINTS" type="number" class="form-control border-input" value="">
+                                </div>
+                            </div>
+                            <br>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
+                                    </div>
+                                 </div>
+                            </form>
+                        </div>
+                       
+                            <hr/>
+                            <div class="content table-responsive table-full-width">
+    
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Type</th>
+                                        <th>Nombre Absence/Retard</th>
+                                        <th>Justification</th>
+                                        <th>Point a déduire</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Absence</td>
+                                            <td>3</td>
+                                            <td>Non-Justifier</td>
+                                            <td>5</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Retard</td>
+                                            <td>5</td>
+                                            <td>Non-Justifier</td>
+                                            <td>6</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Absence</td>
+                                            <td>20</td>
+                                            <td>Justifier</td>
+                                            <td>3</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                 <!--FIN Tableau--->
+                </div>
+            </div>
+            </div>
+        </div>
+        
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+                        <li>
+                            <a href="https://www.ofppt.ma/fr/inc">
+                                Institut National du Cheval
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+				<div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, Droits réservés<i class="fa fa-heart heart"></i> pour <a href="https://www.ofppt.ma/fr/inc">Institut National du Cheval</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+	<script src="assets/js/paper-dashboard.js"></script>
+
+	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
+</html>
