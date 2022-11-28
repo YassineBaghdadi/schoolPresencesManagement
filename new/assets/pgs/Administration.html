@@ -1,90 +1,183 @@
 <div class="container-fluid">
-		<!--Début Tableau--->
- <div class="row">
-		<div class="col-md-12">
-				<div class="card">
+                <!--Début Tableau--->
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4>Ajouter un nouveau membre de l'administration</h4>
+                            <form>
+                            <div class="row">
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Nom *</label>
+                               <input  name="Nom" Id="Nom" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Prénom * </label>
+                                <input name="Prenom" Id="Prenom" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Téléphone *</label>
+                                <input name="Telephone" Id="Telephone" type="tel" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Email * </label>
+                                <input name="Email" Id="Email" type="email" class="form-control border-input" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Poste *</label>
+                                <select class="form-control border-input" id="Profil" name="Profil">
+                                    <option></option>
+                                    <option>Directeur</option>
+                                    <option>Surveillant général</option>
+                                    <option>Assistant(e)</option>
+                                    <option>Surveillant général de l'internat</option>
+                                  </select>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Nom d'utilisateurs *</label>
+                                <input name="UserName" Id="UserName" type="text" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Mot de passe * </label>
+                                <input name="passe" Id="passe" type="password" class="form-control border-input" value="">
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <label>Confirmation Mot de passe *</label>
+                                <input name="cpasse" Id="cpasse" type="password" class="form-control border-input" value="">
+                            </div>
+                        </div>
+                        <br>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
+                                </div>
+                             </div>
+                        </form>
+                    </div>
 
-						<div class="header">
-								<form>
-								<div class="row">
-								<div class="col-lg-3 col-sm-12">
-										<label>Nom *</label>
-									 <input  name="Nom" Id="Nom" type="text" class="form-control border-input" value="">
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Prénom * </label>
-										<input name="Prenom" Id="Prenom" type="text" class="form-control border-input" value="">
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Téléphone *</label>
-										<input name="Telephone" Id="Telephone" type="tel" class="form-control border-input" value="">
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Email * </label>
-										<input name="Email" Id="Email" type="email" class="form-control border-input" value="">
-								</div>
-						</div>
-						<div class="row">
-								<div class="col-lg-3 col-sm-12">
-										<label>Poste *</label>
-										<select class="form-control border-input" id="Profil" name="Profil">
-												<option></option>
-												<option>Directeur</option>
-												<option>Surveillant général</option>
-												<option>Assistant(e)</option>
-												<option>Surveillant général de l'internat</option>
-											</select>
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Nom d'utilisateurs *</label>
-										<input name="UserName" Id="UserName" type="text" class="form-control border-input" value="">
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Mot de passe * </label>
-										<input name="passe" Id="passe" type="password" class="form-control border-input" value="">
-								</div>
-								<div class="col-lg-3 col-sm-12">
-										<label>Confirmation Mot de passe *</label>
-										<input name="cpasse" Id="cpasse" type="password" class="form-control border-input" value="">
-								</div>
-						</div>
-						<br>
-								<div class="row">
-										<div class="text-center">
-												<button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
-										</div>
-								 </div>
-						</form>
-				</div>
+                        <hr/>
+                        <div class="content table-responsive table-full-width">
 
-						<hr/>
-						<div class="content table-responsive table-full-width">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Nom encadrant</th>
+                                    <th>Téléphone</th>
+                                    <th>Email</th>
+                                    <th>Poste</th>
+                                    <th>Nom d'utilisateurs</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Redouane RAMIZ</td>
+                                        <td>0600000000</td>
+                                        <td>redouaneramiz@gmail.com</td>
+                                        <td>Surveillant général</td>
+                                        <td>r.ramiz</td>
+                                        <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                        <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+             <!--FIN Tableau--->
 
-								<table class="table table-striped">
-										<thead>
-												<th>Nom encadrant</th>
-												<th>Téléphone</th>
-												<th>Email</th>
-												<th>Poste</th>
-												<th>Nom d'utilisateurs</th>
-												<th>Modifier</th>
-												<th>Supprimer</th>
-										</thead>
-										<tbody>
-												<tr>
-														<td>Redouane RAMIZ</td>
-														<td>0600000000</td>
-														<td>redouaneramiz@gmail.com</td>
-														<td>Surveillant général</td>
-														<td>r.ramiz</td>
-														<td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
-														<td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
-												</tr>
-										</tbody>
-								</table>
-						</div>
-				</div>
-		</div>
-		</div>
- <!--FIN Tableau--->
-</div>
+             <div class="content">
+                <div class="container-fluid">
+                    <!--Début Tableau--->
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4>Régles de gestion des points de discipline</h4>
+                                <form>
+                                <div class="row">
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Type</label>
+                                    <select class="form-control border-input" id="Type" name="Type">
+                                        <option></option>
+                                        <option>Absence</option>
+                                        <option>retard</option>
+                                      </select>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Nombre Absence/Retard</label>
+                                    <input name="NBRAbsenceRetard" Id="NBRAbsenceRetard" type="number" class="form-control border-input" value="">
+                                </div>
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Justification</label>
+                                    <select class="form-control border-input" id="Justification" name="Justification">
+                                        <option></option>
+                                        <option>Justifier</option>
+                                        <option>Non-Justifier</option>
+                                      </select>
+                                </div>
+                                <div class="col-lg-3 col-sm-12">
+                                    <label>Nombre des points a déduire</label>
+                                    <input name="NBRPOINTS" Id="NBRPOINTS" type="number" class="form-control border-input" value="">
+                                </div>
+                            </div>
+                            <br>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
+                                    </div>
+                                 </div>
+                            </form>
+                        </div>
+
+                            <hr/>
+                            <div class="content table-responsive table-full-width">
+
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Type</th>
+                                        <th>Nombre Absence/Retard</th>
+                                        <th>Justification</th>
+                                        <th>Point a déduire</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Absence</td>
+                                            <td>3</td>
+                                            <td>Non-Justifier</td>
+                                            <td>5</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Retard</td>
+                                            <td>5</td>
+                                            <td>Non-Justifier</td>
+                                            <td>6</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Absence</td>
+                                            <td>20</td>
+                                            <td>Justifier</td>
+                                            <td>3</td>
+                                            <td><button type="submit" class="btn btn-info btn-fill btn-wd">Modifier</button></td>
+                                            <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                 <!--FIN Tableau--->
+                </div>
+            </div>
+            </div>
