@@ -1,3 +1,4 @@
+<script src="./assets/pgs/mn.js"></script>
 <div class="container-fluid">
                 <!--Début Tableau--->
              <div class="row">
@@ -8,27 +9,27 @@
                             <form>
                             <div class="row">
                             <div class="col-lg-3 col-sm-12">
-                                <label>Nom *</label>
-                               <input  name="Nom" Id="Nom" type="text" class="form-control border-input" value="">
+                                <label>Nom *</label><span id="teachermodifyID" hidden></span>
+                               <input  name="Nom" id="teacherLName" type="text" class="form-control border-input" value="">
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Prénom * </label>
-                                <input name="Prenom" Id="Prenom" type="text" class="form-control border-input" value="">
+                                <input name="Prenom" id="teacherFName" type="text" class="form-control border-input" value="">
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Téléphone *</label>
-                                <input name="Telephone" Id="Telephone" type="tel" class="form-control border-input" value="">
+                                <input name="Telephone" id="teacherPhone" type="tel" class="form-control border-input" value="">
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Email * </label>
-                                <input name="Email" Id="Email" type="email" class="form-control border-input" value="">
+                                <input name="Email" id="teacherEmail" type="email" class="form-control border-input" value="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-sm-12">
                                 <label>Module</label>
-                                <select class="form-control border-input" id="Matierer" name="Matierer">
-                                    <option></option>
+                                <select class="form-control border-input" id="teacherMatierer" name="Matierer">
+
                                     <option>Informatique</option>
                                     <option>Comunication</option>
                                     <option>Théorique </option>
@@ -37,21 +38,21 @@
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Nom d'utilisateurs *</label>
-                                <input name="UserName" Id="UserName" type="text" class="form-control border-input" value="">
+                                <input name="UserName" id="teacherUserName" type="text" class="form-control border-input" value="">
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Mot de passe * </label>
-                                <input name="passe" Id="passe" type="password" class="form-control border-input" value="">
+                                <input name="passe" id="teacherPswrd" type="password" class="form-control border-input" value="">
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Confirmation Mot de passe *</label>
-                                <input name="cpasse" Id="cpasse" type="password" class="form-control border-input" value="">
+                                <input name="cpasse" id="teacherPswrd2" type="password" class="form-control border-input" value="">
                             </div>
                         </div>
                         <br>
                             <div class="row">
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter/Modifier</button>
+                                    <button type="button" class="btn btn-info btn-fill btn-wd" id="addTeacherBtn" >Ajouter</button>
                                 </div>
                              </div>
                         </form>

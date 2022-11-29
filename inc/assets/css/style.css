@@ -19059,7 +19059,7 @@ a.text-dark:hover, a.text-dark:focus {
   .table, .jsgrid .jsgrid-table {
     border-collapse: collapse !important;
   }
-  
+
   .table td,
   .jsgrid .jsgrid-table td, .table th, .jsgrid .jsgrid-table th {
     background-color: #ffffff !important;
@@ -30590,6 +30590,10 @@ div.tagsinput span.tag a {
   #settings-trigger {
     display: none;
   }
+}
+
+.err{
+  border: 2px solid red;
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

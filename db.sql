@@ -59,11 +59,13 @@ CREATE TABLE Users (
   phne varchar(20) ,
   zip varchar(10) ,
   email varchar(100) ,
+  module varchar(50),
   usrNme varchar(50) ,
   psswrd text,
   prflPic longblob,
   lastActive datetime ,
   lastIp varchar(50)
+
 
 );
 
