@@ -79,12 +79,54 @@ const id1 = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
 
+function fillteachersTable(){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/teachers.php",
+        data: {
+          o:'fillteachersTable'
+        },
+        success: function (d) {
+            // alert(d);
+            // console.log(d);
 
+            $('#teachersTable').html(d);
+        },
+        error: function (request, error) {
+            console.log ("ERROR:" + error);
+        }
+    });
+}
+
+fillteachersTable();
+
+function mdfTeacher(id){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/teachers.php",
+        data: {
+          o:'getteacherInfo',i:id
+        },
+        success: function (d) {
+            // alert(d);
+            var dt = JSON.parse(d);
+            // console.log(dt);
+            $('#teacherLName').val(dt.lname);
+            $('#teacherFName').val(dt.fname);
+            $('#teacherPhone').val(dt.phne);
+            $('#teacherEmail').val(dt.email);
+            $('#teacherUserName').val(dt.usrNme);
+            $('#teachermodifyID').html(dt.id);
+            $('#addTeacherBtn').html('Modifier');
+
+        },
+        error: function (request, error) {
+            console.log ("ERROR:" + error);
+        }
+    });
+}
 
 $('#addTeacherBtn').click(function (){
-
-
-
     if (!$('#teacherLName').val()) {
         $('#teacherLName').focus();
         // $('#teacherLName').addClass(' err');
@@ -155,7 +197,7 @@ $('#addTeacherBtn').click(function (){
       }
       if ($('#teachermodifyID').html()) {
         data['o'] = 'mdf';
-        data['o'] = 'mdf';
+        data['id'] = $('#teachermodifyID').html();
 
 
         if ($('#teacherPswrd').val() || $('#teacherPswrd2').val()) {
@@ -217,7 +259,8 @@ $('#addTeacherBtn').click(function (){
             data: data,
             success: function (d) {
                 // alert(d);
-                console.log(d);
+                // console.log(d);
+                fillteachersTable();
                 $('#teacherLName').val('');
                 $('#teacherFName').val('');
                 $('#teacherPhone').val('');
@@ -226,6 +269,13 @@ $('#addTeacherBtn').click(function (){
                 $('#teacherPswrd').val('');
                 $('#teacherPswrd2').val('');
                 $('#teachermodifyID').html('');
+                $('#addTeacherBtn').html('Ajouter');
+                cuteToast1({
+                  type: "success",
+                  title: "",
+                  message: "All the data Saved successfully to the Database .",
+                  timer: 5000
+                });
             },
             error: function (request, error) {
                 console.log ("ERROR:" + error);
@@ -236,7 +286,7 @@ $('#addTeacherBtn').click(function (){
 
   });
 
-  $('#addFilierBtn').click(function (){
+$('#addFilierBtn').click(function (){
 
       alert('clicked');
       // cuteToast({
