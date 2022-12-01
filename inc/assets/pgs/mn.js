@@ -85,9 +85,7 @@ const cuteAlert1 = ({
   vibrate = [],
   playSound = null,
   cancelText = 'Cancel',
-  closeStyle,
-}) => {
-  return new Promise(resolve => {
+  closeStyle, }) => { return new Promise(resolve => {
     const existingAlert = document.querySelector('.alert-wrapper');
 
     if (existingAlert) {
@@ -196,6 +194,7 @@ const cuteAlert1 = ({
 const id1 = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
+// /////////////////////////////////// Encadrants ////////////////////////////////////////////
 
 function fillteachersTable(){
   $.ajax({
@@ -271,6 +270,7 @@ function rmTeacher(id){
                     message: "The User has been remeved from the database  .",
                     timer: 5000
                   });
+                  fillteachersTable();
                 }else {
                   console.log(d);
                   cuteToast1({
@@ -453,38 +453,6 @@ $('#addTeacherBtn').click(function (){
 
   });
 
-// $( window ).load(function() {
-//   $('#teacherUserName').on('input', function (){
-//     // alert($('#teacherUserName').val());
-//     console.log($('#teacherUserName').val());
-//     if ($('#teacherUserName').val() && $('#teacherUserName').val().length > 5) {
-//       $.ajax({
-//             type: "POST",
-//             url: "assets/php/teachers.php",
-//             data: {
-//               o:'checkTacherUserName', u:$('#teacherUserName').val()
-//             },
-//             success: function (d) {
-//               if (d == '1') {
-//                 $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>')
-//               }else {
-//                 $('#teacherUserNameValid').html('<span style="color: green;">valid UserName </span>')
-//               }
-//             },
-//             error: function ( error) {
-//               console.log(JSON.stringify(error));
-//             }
-//         });
-//     }else {
-//       $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>')
-//     }
-//
-//   });
-// });
-// window.addEventListener('DOMContentLoaded', (event) => {
-//
-//
-// });
 
 function teacherUserNameCheck(){
   // console.log($('#teacherUserName').val());
@@ -514,36 +482,196 @@ function teacherUserNameCheck(){
   }
 }
 
+///////////////////////////////////// Filiers /////////////////////////////////////////////
+
+function fillFiliersTable(){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/filier.php",
+        data: {
+          o:'fillFiliersTable'
+        },
+        success: function (d) {
+            // alert(d);
+            // console.log(d);
+
+            $('#filiersTable').html(d);
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+}
+
+fillFiliersTable();
+
+function filierNameCheck(){
+  // console.log($.trim($('#NomFiliere').val()));
+  if ($.trim($('#NomFiliere').val())) {
+    $.ajax({
+          type: "POST",
+          url: "assets/php/filier.php",
+          data: {
+            o:'checkFilierName', n:$.trim($('#NomFiliere').val())
+          },
+          success: function (d) {
+            if (d == '1') {
+              $('#addFilierBtn').prop('disabled', true);
+              $('#filierNameValid').html('<span style="color: red;">invalid Name </span>');
+            }else {
+              $('#addFilierBtn').prop('disabled', false);
+              $('#filierNameValid').html('<span style="color: green;">valid Name </span>');
+            }
+          },
+          error: function ( error) {
+            console.log(JSON.stringify(error));
+          }
+      });
+  }else {
+    $('#addFilierBtn').prop('disabled', true);
+    $('#filierNameValid').html('<span style="color: red;">invalid Name </span>');
+  }
+}
+
 
 $('#addFilierBtn').click(function (){
+  if (!$.trim($('#NomFiliere').val())) {
+        cuteToast({
+          type: "error", // or 'info', 'error', 'warning'
+          title: " ",
+          message: "Please write a valid Name .",
+          timer: 5000
+        });
+      }else {
+        var data = {"n":$.trim($('#NomFiliere').val())};
+        if ($('#filierModifyID').html()) {
+          data['o'] = 'mdfFilier';
+          data['i'] = $('#filierModifyID').html();
 
-      alert('clicked');
-      // cuteToast({
-      //   type: "success", // or 'info', 'error', 'warning'
-      //   title: " ",
-      //   message: "Clicked",
-      //   timer: 5000
-      // });
-
-      // if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else if (!$('#').val()) {
-      //
-      // }else {
-      //
-      // }
+        }else {
+          data['o'] = 'addFilier';
+        }
 
 
+        $.ajax({
+              type: "POST",
+              url: "assets/php/filier.php",
+              data: data,
+              success: function (d) {
+                console.log(d);
+                fillFiliersTable();
+
+                if (d == '1') {
+                  cuteToast({
+                    type: "success", // or 'info', 'error', 'warning'
+                    title: " ",
+                    message: "added",
+                    timer: 5000
+                  });
+                  $('#NomFiliere').val('');
+                  $('#addFilierBtn').html('Ajouter');
+                  $('#filierModifyID').html('');
+
+                }else if (d == '2') {
+                  cuteToast({
+                    type: "success", // or 'info', 'error', 'warning'
+                    title: " ",
+                    message: "Modified",
+                    timer: 5000
+                  });
+                  $('#NomFiliere').val('');
+                  $('#addFilierBtn').html('Ajouter');
+                  $('#filierModifyID').html('');
+
+                }else {
+                  cuteToast({
+                    type: "error", // or 'info', 'error', 'warning'
+                    title: " ",
+                    message: "the operation failed .",
+                    timer: 5000
+                  });
+                }
+
+              },
+              error: function ( error) {
+                console.log(JSON.stringify(error));
+              }
+          });
+
+
+      }
+
+
+});
+
+function mdfFilier(id){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/filier.php",
+        data: {
+          o:'getFilerInfo',i:id
+        },
+        success: function (d) {
+            // alert(d);
+            var dt = JSON.parse(d);
+            // console.log(dt);
+            $('#NomFiliere').val(dt.nme);
+            $('#filierModifyID').html(dt.id);
+            $('#addFilierBtn').html('Modifier');
+
+        },
+        error: function (request, error) {
+            console.log ("ERROR:" + error);
+        }
     });
+}
+
+function rmFilier(id){
+  cuteAlert1({
+    type:'question',
+    title:'Confirmation',
+    message:'please confirm to remove this Filier from the database.',
+    confirmText:'remove',
+    cancelText:'cancel'
+
+  }).then((e) =>{
+    if (e == 'confirm') {
+      $.ajax({
+            type: "POST",
+            url: "assets/php/filier.php",
+            data: {
+              o:'rmFilier',i:id
+            },
+            success: function (d) {
+                // alert(d);
+                // var dt = JSON.parse(d);
+                // console.log(dt);
+                if (d == '1') {
+                  cuteToast1({
+                    type: "success",
+                    title: "Removed",
+                    message: "The Filier has been remeved from the database .",
+                    timer: 5000
+                  });
+                  fillFiliersTable();
+                }else {
+                  console.log(d);
+                  cuteToast1({
+                    type: "error",
+                    title: "Error",
+                    message: "removing error please see the logs for more info .",
+                    timer: 5000
+                  });
+                }
+
+            },
+            error: function (request, error) {
+                console.log ("ERROR:" + error);
+            }
+        });
+    }else {
+
+    }
+  });
+
+}

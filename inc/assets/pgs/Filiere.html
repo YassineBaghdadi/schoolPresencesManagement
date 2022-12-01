@@ -12,13 +12,17 @@
                         <div class="header">
                             <form>
                             <div class="col-lg-8 col-sm-12">
-                                <label>Nom Filière</label>
-                               <input  name="NomFiliere" Id="NomFiliere" type="text" class="form-control border-input" value="">
+                                <label>Nom Filière</label><span id="filierModifyID" hidden></span>
+                               <input  name="NomFiliere" id="NomFiliere" onkeyup="filierNameCheck();" type="text" class="form-control border-input" value="">
+                               <div id="filierNameValid">
+
+                               </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="text-center">
                                     <button type="button" class="btn btn-success btn-fill btn-wd" id="addFilierBtn">Ajouter</button>
+
                                 </div>
                              </div>
                         </form>
@@ -36,19 +40,10 @@
                                     <th>Modifier</th>
                                     <th>Supprimer</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Équitation</td>
-                                        <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Modifier</button></td>
-                                        <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
+                                <tbody id="filiersTable">
 
-                                    </tr>
 
-                                    <tr>
-                                        <td>Nutrition des cheveux</td>
-                                        <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Modifier</button></td>
-                                        <td><button type="submit" class="btn btn-danger btn-fill btn-wd">Supprimer</button></td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>

@@ -1,7 +1,7 @@
 <?php
   // echo "test";
   // ini_set('display_errors', 1);
-  error_reporting(E_ALL);
+  // error_reporting(E_ALL);
   if (isset($_POST['o'])) {
     session_start();
     $f = fopen("cnf", "r") or die("Unable to open file!");
