@@ -675,3 +675,81 @@ function rmFilier(id){
   });
 
 }
+
+///////////////////////////////////// Goups /////////////////////////////////////////////
+
+function fillGrpsData(){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/grps.php",
+        data: {
+          o:'fillGrpsData'
+        },
+        success: function (d) {
+            // alert(d);
+            // console.log(d);
+            dd = JSON.parse(d);
+
+            $('#GrpFiliersCombo').html(dd.a);
+            $('#grpsTable').html(dd.b);
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+}
+
+$('#addGrpBtn').click(function (){
+    // alert('clicked');
+    if (!$('#GrpName').val()) {
+        $('#GrpName').focus();
+        // $('#teacherLName').addClass(' err');
+        // var timeout = setTimeout(function(){
+        //   $('#teacherLName').removeClass('err');
+        // },3000);
+        cuteToast1({
+          type: "error",
+          title: "Error",
+          message: "The Name of the Group is required to complete the operation .",
+          timer: 5000
+        });
+
+    }else {
+      var data = {
+        "gname": $('#GrpName').val(),
+        "flr": $('#GrpFiliersCombo').val()
+      }
+      if ($('#grpModifyID').html()) {
+        data['o'] = 'mdfGrp';
+        data['id'] = $('#grpModifyID').html();
+
+      }else {
+        data['o'] = 'addGrp';
+      }
+      //
+      $.ajax({
+            type: "POST",
+            url: "assets/php/grps.php",
+            data: data,
+            success: function (d) {
+                // alert(d);
+                // console.log(d);
+                // fillteachersTable();
+                $('#teacherLName').val('');
+                $('#teacherFName').val('null');
+
+                cuteToast1({
+                  type: "success",
+                  title: "",
+                  message: "All the data Saved successfully to the Database .",
+                  timer: 5000
+                });
+            },
+            error: function (request, error) {
+                console.log ("ERROR:" + error);
+            }
+        });
+    }
+
+
+  });
