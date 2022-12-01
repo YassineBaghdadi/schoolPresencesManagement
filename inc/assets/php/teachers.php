@@ -1,10 +1,13 @@
 <?php
-
+  // echo "test";
+  // ini_set('display_errors', 1);
+  error_reporting(E_ALL);
   if (isset($_POST['o'])) {
     session_start();
     $f = fopen("cnf", "r") or die("Unable to open file!");
 
     $c = explode('#', trim(fread($f,filesize("cnf"))));
+    // print_r($c);
     fclose($f);
     $conn= mysqli_connect($c[0], $c[1], $c[2], $c[3]);
 
@@ -70,6 +73,24 @@
     if ($_POST['o'] == "getteacherInfo") {
       $dt = mysqli_fetch_assoc(mysqli_query($conn, 'select id, fname, lname, phne, email, module, usrNme from Users where id = '.$_POST['i']));
       echo json_encode($dt);
+
+    }
+    if ($_POST['o'] == "rmTeacher") {
+      $qry = 'delete from Users where id = '.$_POST['i'];
+      if (mysqli_query($conn, $qry)) {
+        echo "1";
+      }else {
+        echo "";
+      }
+
+    }
+    if ($_POST['o'] == "checkTacherUserName") {
+      $dt = mysqli_query($conn, 'select id from Users where usrNme like  "'.$_POST['u'].'"');
+      if (mysqli_num_rows($dt) > 0) {
+        echo "1";
+      }else {
+        echo "";
+      }
 
     }
 

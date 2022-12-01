@@ -75,6 +75,124 @@ const cuteToast1 = ({ type, title, message, timer = 5000,  vibrate = [], playSou
   });
 };
 
+const cuteAlert1 = ({
+  type,
+  title,
+  message,
+  img,
+  buttonText = 'OK',
+  confirmText = 'OK',
+  vibrate = [],
+  playSound = null,
+  cancelText = 'Cancel',
+  closeStyle,
+}) => {
+  return new Promise(resolve => {
+    const existingAlert = document.querySelector('.alert-wrapper');
+
+    if (existingAlert) {
+      existingAlert.remove();
+    }
+
+    const body = document.querySelector('body');
+
+    const scripts = document.getElementsByTagName('script');
+
+    let src = '';
+
+    for (let script of scripts) {
+      if (script.src.includes('cute-alert.js')) {
+        src = script.src.substring(0, script.src.lastIndexOf('/'));
+      }
+    }
+
+    let btnTemplate = `
+    <button class="alert-button ${type}-bg ${type}-btn">${buttonText}</button>
+    `;
+
+    if (type === 'question') {
+      btnTemplate = `
+      <div class="question-buttons">
+        <button class="confirm-button ${type}-bg ${type}-btn">${confirmText}</button>
+        <button class="cancel-button error-bg error-btn">${cancelText}</button>
+      </div>
+      `;
+    }
+
+    if (vibrate.length > 0) {
+      navigator.vibrate(vibrate);
+    }
+
+    if (playSound !== null) {
+      let sound = new Audio(playSound);
+      sound.play();
+    }
+
+    const template = `
+    <div class="alert-wrapper">
+      <div class="alert-frame">
+        ${img !== '' ? '<div class="alert-header ' + type + '-bg">' : '<div>'}
+          <span class="alert-close ${
+            closeStyle === 'circle'
+              ? 'alert-close-circle'
+              : 'alert-close-default'
+          }">X</span>
+          ${img !== '' ? '<img class="alert-img" src="./img/' + type + '.svg" />' : ''}
+        </div>
+        <div class="alert-body">
+          <span class="alert-title">${title}</span>
+          <br>
+          <span class="alert-message">${message}</span>
+          ${btnTemplate}
+        </div>
+      </div>
+    </div>
+    `;
+
+    body.insertAdjacentHTML('afterend', template);
+
+    const alertWrapper = document.querySelector('.alert-wrapper');
+    const alertFrame = document.querySelector('.alert-frame');
+    const alertClose = document.querySelector('.alert-close');
+
+    if (type === 'question') {
+      const confirmButton = document.querySelector('.confirm-button');
+      const cancelButton = document.querySelector('.cancel-button');
+
+      confirmButton.addEventListener('click', () => {
+        alertWrapper.remove();
+        resolve('confirm');
+      });
+
+      cancelButton.addEventListener('click', () => {
+        alertWrapper.remove();
+        resolve();
+      });
+    } else {
+      const alertButton = document.querySelector('.alert-button');
+
+      alertButton.addEventListener('click', () => {
+        alertWrapper.remove();
+        resolve('ok');
+      });
+    }
+
+    alertClose.addEventListener('click', () => {
+      alertWrapper.remove();
+      resolve('close');
+    });
+
+/*     alertWrapper.addEventListener('click', () => {
+      alertWrapper.remove();
+      resolve();
+    }); */
+
+    alertFrame.addEventListener('click', e => {
+      e.stopPropagation();
+    });
+  });
+};
+
 const id1 = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
@@ -92,8 +210,8 @@ function fillteachersTable(){
 
             $('#teachersTable').html(d);
         },
-        error: function (request, error) {
-            console.log ("ERROR:" + error);
+        error: function ( error) {
+          console.log(JSON.stringify(error));
         }
     });
 }
@@ -124,6 +242,55 @@ function mdfTeacher(id){
             console.log ("ERROR:" + error);
         }
     });
+}
+
+function rmTeacher(id){
+  cuteAlert1({
+    type:'question',
+    title:'Confirmation',
+    message:'please confirm to remove this teacher from the database.',
+    confirmText:'remove',
+    cancelText:'cancel'
+
+  }).then((e) =>{
+    if (e == 'confirm') {
+      $.ajax({
+            type: "POST",
+            url: "assets/php/teachers.php",
+            data: {
+              o:'rmTeacher',i:id
+            },
+            success: function (d) {
+                // alert(d);
+                // var dt = JSON.parse(d);
+                // console.log(dt);
+                if (d == '1') {
+                  cuteToast1({
+                    type: "success",
+                    title: "Removed",
+                    message: "The User has been remeved from the database  .",
+                    timer: 5000
+                  });
+                }else {
+                  console.log(d);
+                  cuteToast1({
+                    type: "error",
+                    title: "Error",
+                    message: "removing error please see the logs for more info .",
+                    timer: 5000
+                  });
+                }
+
+            },
+            error: function (request, error) {
+                console.log ("ERROR:" + error);
+            }
+        });
+    }else {
+
+    }
+  });
+
 }
 
 $('#addTeacherBtn').click(function (){
@@ -285,6 +452,68 @@ $('#addTeacherBtn').click(function (){
 
 
   });
+
+// $( window ).load(function() {
+//   $('#teacherUserName').on('input', function (){
+//     // alert($('#teacherUserName').val());
+//     console.log($('#teacherUserName').val());
+//     if ($('#teacherUserName').val() && $('#teacherUserName').val().length > 5) {
+//       $.ajax({
+//             type: "POST",
+//             url: "assets/php/teachers.php",
+//             data: {
+//               o:'checkTacherUserName', u:$('#teacherUserName').val()
+//             },
+//             success: function (d) {
+//               if (d == '1') {
+//                 $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>')
+//               }else {
+//                 $('#teacherUserNameValid').html('<span style="color: green;">valid UserName </span>')
+//               }
+//             },
+//             error: function ( error) {
+//               console.log(JSON.stringify(error));
+//             }
+//         });
+//     }else {
+//       $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>')
+//     }
+//
+//   });
+// });
+// window.addEventListener('DOMContentLoaded', (event) => {
+//
+//
+// });
+
+function teacherUserNameCheck(){
+  // console.log($('#teacherUserName').val());
+  if ($('#teacherUserName').val() && $('#teacherUserName').val().length > 5) {
+    $.ajax({
+          type: "POST",
+          url: "assets/php/teachers.php",
+          data: {
+            o:'checkTacherUserName', u:$('#teacherUserName').val()
+          },
+          success: function (d) {
+            if (d == '1') {
+              $('#addTeacherBtn').prop('disabled', true);
+              $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>');
+            }else {
+              $('#addTeacherBtn').prop('disabled', false);
+              $('#teacherUserNameValid').html('<span style="color: green;">valid UserName </span>');
+            }
+          },
+          error: function ( error) {
+            console.log(JSON.stringify(error));
+          }
+      });
+  }else {
+    $('#addTeacherBtn').prop('disabled', true);
+    $('#teacherUserNameValid').html('<span style="color: red;">invalid UserName </span>');
+  }
+}
+
 
 $('#addFilierBtn').click(function (){
 

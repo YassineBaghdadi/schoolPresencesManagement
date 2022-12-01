@@ -38,7 +38,10 @@
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Nom d'utilisateurs *</label>
-                                <input name="UserName" id="teacherUserName" type="text" class="form-control border-input" value="">
+                                <input name="UserName" onkeyup="teacherUserNameCheck()" id="teacherUserName" type="text" class="form-control border-input" value="">
+                                <div id="teacherUserNameValid">
+
+                                </div>
                             </div>
                             <div class="col-lg-3 col-sm-12">
                                 <label>Mot de passe * </label>
