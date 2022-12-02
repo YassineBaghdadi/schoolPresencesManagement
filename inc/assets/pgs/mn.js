@@ -688,7 +688,7 @@ function fillGrpsData(){
             // alert(d);
             // console.log(d);
             dd = JSON.parse(d);
-            console.log(dd.b);
+            // console.log(dd.b);
 
             $('#GrpFiliersCombo').html(dd.a);
             $('#grpsTable').html(dd.b);
@@ -833,10 +833,145 @@ function rmGrp(id){
 
 }
 
+function getGrpStudentManagementData(){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/grps.php",
+        data: {
+          o:'getGrpStudentManagementData', i:$('#grpId').html()
+        },
+        success: function (d) {
+            // alert(d);
+            // console.log(d);
+            dd = JSON.parse(d);
+            // console.log(dd.b);
+
+            $('#stgntsWithoutGrpCombo').html(dd.a);
+            $('#GrpStdntsTable').html(dd.b);
+            if ($('#stgntsWithoutGrpCombo').val()) {
+
+              $('#assignStdntToGrpBtn').attr("disabled", false);
+            }else {
+              $('#assignStdntToGrpBtn').attr("disabled", true);
+
+            }
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+}
+
 function stdntsMngmnt(id){
+  $('#grpId').html(id);
+  getGrpStudentManagementData();
   document.getElementById("stdntsManagementWindow").style.display = "block";
+
 }
 
 $('#stdntsMngmntCloseBtn').click(function (){
+  $('#grpId').html('');
   document.getElementById("stdntsManagementWindow").style.display = "none";
+});
+
+function removeStdntFromGrp(s, g, sname, gname){
+  cuteAlert1({
+    type:'question',
+    title:'Confirmation',
+    message:'Please confirm to remove the student '+sname +' from the group '+gname +' .',
+    confirmText:'remove',
+    cancelText:'cancel'
+
+  }).then((e) =>{
+    if (e == 'confirm') {
+      $.ajax({
+            type: "POST",
+            url: "assets/php/grps.php",
+            data: {
+              o:'removeStdntFromGrp',s:s, g:g
+            },
+            success: function (d) {
+                // alert(d);
+                // var dt = JSON.parse(d);
+                // console.log(dt);
+                if (d == '1') {
+                  cuteToast1({
+                    type: "success",
+                    title: "Removed",
+                    message: "the student "+sname+" removed from the Group "+gname,
+                    timer: 5000
+                  });
+                  getGrpStudentManagementData();
+                }else {
+                  console.log(d);
+                  cuteToast1({
+                    type: "error",
+                    title: "Error",
+                    message: "Error please see the logs for more info .",
+                    timer: 5000
+                  });
+                }
+
+            },
+            error: function (request, error) {
+                console.log ("ERROR:" + error);
+            }
+        });
+    }else {
+
+    }
+  });
+}
+
+$('#stgntsWithoutGrpCombo').change( function (){
+
+  if ($('#stgntsWithoutGrpCombo').val()) {
+
+    $('#assignStdntToGrpBtn').attr("disabled", false);
+  }else {
+    $('#assignStdntToGrpBtn').attr("disabled", true);
+
+  }
+});
+
+$('#assignStdntToGrpBtn').click(function (){
+
+  if ($('#stgntsWithoutGrpCombo').val()) {
+    $.ajax({
+          type: "POST",
+          url: "assets/php/grps.php",
+          data: {
+            o:'assignStdntToGrp',s:$('#stgntsWithoutGrpCombo').val(), g:$('#grpId').html()
+          },
+          success: function (d) {
+              // alert(d);
+              // var dt = JSON.parse(d);
+              console.log(d);
+              if (d == '1') {
+                cuteToast1({
+                  type: "success",
+                  title: "Removed",
+                  message: "the student "+$("#stgntsWithoutGrpCombo option:selected").text()+" has been assigned to this Group ",
+                  timer: 5000
+                });
+                getGrpStudentManagementData();
+              }else {
+                console.log(d);
+                cuteToast1({
+                  type: "error",
+                  title: "Error",
+                  message: "Error please see the logs for more info .",
+                  timer: 5000
+                });
+              }
+
+          },
+          error: function (request, error) {
+              console.log ("ERROR:" + error);
+          }
+      });
+
+  }else {
+
+  }
 });

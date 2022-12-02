@@ -14,7 +14,7 @@
           background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
-        /* Modal Content */
+
         #stdntsManagementWindowContent {
           background-color: #fefefe;
           margin: auto;
@@ -23,11 +23,18 @@
           width: 35%;
         }
 
-        /* The Close Button */
+
         #stdntsMngmntCloseBtn {
 
           float: right;
           align-self: flex-end;
+        }
+
+        #popupTable{
+          overflow-y:scroll;
+          display:block;
+          border-collapse: collapse;
+          max-height: 270px;
         }
 </style>
 
@@ -92,7 +99,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <div class="card">
 
-                            <div class="content">
+                            <div class="content" hidden>
 
                                 <div class="content table-responsive table-full-width">
                                     <div class="header">
@@ -123,74 +130,6 @@
 
                 </div>
 
-
-             <!--Début Tableau
-             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-
-                            <br>
-                        <div class="content table-responsive table-full-width">
-
-                            <table class="table table-striped">
-                                <thead>
-                                    <th>Nom Prénom</th>
-                                    <th>Filière</th>
-                                    <th>Groupe</th>
-                                    <th>Séance</th>
-                                    <th>État</th>
-                                    <th>Signalé Par</th>
-                                    <th>Billet</th>
-                                    <th>Stagiaire</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>BOURIR Karim</td>
-                                        <td>Équitation</td>
-                                        <td>A</td>
-                                        <td>08:30-11:30</td>
-                                        <td>Absence</td>
-                                        <td>Mohamed MOHAMED</td>
-                                        <td><button type="submit" class="btn btn-success">Billet</button></td>
-                                        <td><button type="submit" class="btn btn-info">Détails</button></td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>Faris Bensoussa</td>
-                                        <td>Nutrition des cheveux</td>
-                                        <td>A</td>
-                                        <td>08:30-11:30</td>
-                                        <td>Retard</td>
-                                        <td>Soumia SNOUSSI</td>
-                                        <td><button type="submit" class="btn btn-success">Billet</button></td>
-                                        <td><button type="submit" class="btn btn-info">Détails</button></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>D</td>
-                                        <td>11:30-13:30</td>
-                                        <td>Absence</td>
-                                        <td>Abdelatif NADIF</td>
-                                        <td><button type="submit" class="btn btn-success">Billet</button></td>
-                                        <td><button type="submit" class="btn btn-info">Détails</button></td>
-
-                                    </tr>
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                </div>--->
-             <!--FIN Tableau--->
-
             </div>
         </div>
 
@@ -203,20 +142,20 @@
 
                       <hr>
                       <div class="header">
-                          <h4 class="title">Ajouter un nouvel Stagaire à ce groupe </h4>
+                          <h4 class="title">Ajouter un nouvel Stagaire à ce groupe </h4><span id="grpId" hidden></span>
                       </div>
                       <br>
                       <div class="row" style="margin:auto;">
 
 
                           <div class="col-lg-8 col-sm-6">
-                              <select class="form-control border-input" id="GrpFiliersCombo" name="Filieres">
+                              <select class="form-control border-input" id="stgntsWithoutGrpCombo" name="Filieres">
 
                                 </select>
                           </div>
 
                           <div class="col-lg-4 col-sm-6">
-                              <button type="button" id="addGrpBtn" class="btn btn-success btn-fill btn-wd">Ajouter</button>
+                              <button type="button" id="assignStdntToGrpBtn" disabled class="btn btn-success btn-fill btn-wd">Ajouter</button>
                           </div>
                       </div>
                       <!-- <hr> -->
@@ -228,33 +167,16 @@
                           </div>
                           <br>
 
-                          <table class="table table-striped" >
+                          <table class="table table-striped" id="popupTable">
                               <thead>
                                   <th>Stagaires</th>
                                   <th>Filière</th>
                                   <th>Dissocier</th>
                               </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>Bourir Karim</td>
-                                      <td>Nutrition des cheveux</td>
-                                      <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
-                                  </tr>
-                                  <tr>
-                                      <td>Karim Karim</td>
-                                      <td>Nutrition des cheveux</td>
-                                      <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
-                                  </tr>
-                                  <tr>
-                                      <td>Yassine Karim</td>
-                                      <td>Nutrition des cheveux</td>
-                                      <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
-                                  </tr>
-                                  <tr>
-                                      <td>Faris Bensoussa</td>
-                                      <td>Nutrition des cheveux</td>
-                                      <td><button type="submit" class="btn btn-warning btn-fill btn-wd">Dissocier</button></td>
-                                  </tr>
+                              <tbody id="GrpStdntsTable">
+
+
+
                               </tbody>
                           </table>
                       </div>

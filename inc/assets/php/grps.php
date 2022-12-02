@@ -83,6 +83,47 @@
       }
     }
 
+    if ($_POST['o'] == 'getGrpStudentManagementData') {
+      $stdntNoGrp = '<option value="">Choose a Student ...</option>';
+      $stdntsGrp = '';
+      $dt = mysqli_query($conn, 'select id, concat(fname, " ", lname) as sname from Students where grp is null');
+      while ($a  = mysqli_fetch_array($dt)) {
+        $stdntNoGrp .= '
+          <option value="'.$a['id'].'">'.$a['sname'].'</option>
+        ';
+      }
+      $dt = mysqli_query($conn, 'select s.id as sid, g.id as gid, g.nme as gname, concat(s.fname, " ", s.lname) as stdnt, f.nme as fname
+      from Students s inner join Grps g on s.grp = g.id left join Filiers f on g.filier = f.id where g.id = '.$_POST['i']);
+      while ($a = mysqli_fetch_array($dt)) {
+        $stdntsGrp .= '
+        <tr>
+            <td>'.$a["stdnt"].'</td>
+            <td>'.$a["fname"].'</td>
+            <td><button type="button" class="btn btn-warning btn-fill btn-wd" onclick="removeStdntFromGrp(\''.$a["sid"].'\', \''.$a["gid"].'\', \''.$a["stdnt"].'\', \''.$a["gname"].'\')">Dissocier</button></td>
+        </tr>
+        ';
+      }
+
+      $out = array('a' => $stdntNoGrp, 'b' => $stdntsGrp);
+      echo json_encode($out);
+
+    }
+
+    if ($_POST['o'] == 'removeStdntFromGrp') {
+      if (mysqli_query($conn, 'update Students set grp = null where id = '.$_POST['s'])) {
+        echo "1";
+      }else {
+        echo "";
+      }
+    }
+
+    if ($_POST['o'] == 'assignStdntToGrp') {
+      if (mysqli_query($conn, 'update Students set grp = '.$_POST['g'].' where id = '.$_POST['s'])) {
+        echo "1";
+      }else {
+        echo "";
+      }
+    }
 
 
 
