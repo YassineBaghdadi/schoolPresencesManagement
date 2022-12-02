@@ -975,3 +975,76 @@ $('#assignStdntToGrpBtn').click(function (){
 
   }
 });
+
+///////////////////////////////////// Stagiaires ///////////////////////////////////////////
+
+
+function getStdntsTable(){
+
+  $.ajax({
+        type: "POST",
+        url: "assets/php/grps.php",
+        data: {
+          o:'getStdntsTable'
+        },
+        success: function (d) {
+            // alert(d);
+            // console.log(d);
+
+            $('#').html(d);
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+
+}
+
+// TODO: to be continued .......
+
+
+
+
+
+///////////////////////////////////// EmploiDuTemps ///////////////////////////////////////////
+
+
+
+function getPlanningData(){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/planning.php",
+        data: {
+          o:'getPlanningData'
+        },
+        success: function (d) {
+          // console.log(d);
+          var dd = JSON.parse(d);
+          $('#planingFiliersCombo').html(dd.f);
+
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+}
+
+getPlanningData();
+
+$('#planingFiliersCombo').change(function (){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/planning.php",
+        data: {
+          o:'getGrpsFromSelectedFlr',f:$('#planingFiliersCombo').val()
+        },
+        success: function (d) {
+          // console.log(d);
+          $('#planingGrpsCombo').html(d);
+
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+});

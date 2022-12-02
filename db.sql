@@ -82,11 +82,14 @@ CREATE TABLE Modules (
 );
 
 
-
 CREATE TABLE TimeLinePlan (
   id int AUTO_INCREMENT PRIMARY KEY,
   grp int ,
-  FOREIGN KEY (grp) REFERENCES Grps (id)
+  tcher int,
+  dy varchar(20),
+  sessn varchar(20),
+  FOREIGN KEY (grp) REFERENCES Grps (id),
+  FOREIGN KEY (tcher) REFERENCES Users (id)
 );
 
 CREATE TABLE PlanedSeassion (

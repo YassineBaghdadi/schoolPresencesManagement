@@ -1,0 +1,7 @@
+use INC;
+
+alter table TimeLinePlan
+  add column tcher int,
+  add column dy varchar(20),
+  add column sessn varchar(20),
+  add foreign key (tcher) references Users (id);
