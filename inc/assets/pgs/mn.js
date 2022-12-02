@@ -194,6 +194,7 @@ const cuteAlert1 = ({
 const id1 = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
+
 // /////////////////////////////////// Encadrants ////////////////////////////////////////////
 
 function fillteachersTable(){
@@ -453,7 +454,6 @@ $('#addTeacherBtn').click(function (){
 
   });
 
-
 function teacherUserNameCheck(){
   // console.log($('#teacherUserName').val());
   if ($('#teacherUserName').val() && $('#teacherUserName').val().length > 5) {
@@ -532,7 +532,6 @@ function filierNameCheck(){
     $('#filierNameValid').html('<span style="color: red;">invalid Name </span>');
   }
 }
-
 
 $('#addFilierBtn').click(function (){
   if (!$.trim($('#NomFiliere').val())) {
@@ -689,15 +688,19 @@ function fillGrpsData(){
             // alert(d);
             // console.log(d);
             dd = JSON.parse(d);
+            console.log(dd.b);
 
             $('#GrpFiliersCombo').html(dd.a);
             $('#grpsTable').html(dd.b);
+            $('#stdntsWithoutGrpTable').html(dd.c);
         },
         error: function ( error) {
           console.log(JSON.stringify(error));
         }
     });
 }
+
+fillGrpsData();
 
 $('#addGrpBtn').click(function (){
     // alert('clicked');
@@ -726,24 +729,36 @@ $('#addGrpBtn').click(function (){
       }else {
         data['o'] = 'addGrp';
       }
-      //
+      // console.log(data);
       $.ajax({
             type: "POST",
             url: "assets/php/grps.php",
             data: data,
             success: function (d) {
                 // alert(d);
-                // console.log(d);
+                console.log(d);
                 // fillteachersTable();
-                $('#teacherLName').val('');
-                $('#teacherFName').val('null');
+                if (d == '1') {
+                  $('#GrpName').val('');
+                  $('#GrpFiliersCombo').val('null');
+                  $('#addGrpBtn').html('Ajouter');
+                  fillGrpsData();
+                  cuteToast1({
+                    type: "success",
+                    title: "",
+                    message: "All the data Saved successfully to the Database .",
+                    timer: 5000
+                  });
 
-                cuteToast1({
-                  type: "success",
-                  title: "",
-                  message: "All the data Saved successfully to the Database .",
-                  timer: 5000
-                });
+                }else {
+                  cuteToast1({
+                    type: "error",
+                    title: "",
+                    message: "the operation failed .",
+                    timer: 5000
+                  });
+                }
+
             },
             error: function (request, error) {
                 console.log ("ERROR:" + error);
@@ -753,3 +768,75 @@ $('#addGrpBtn').click(function (){
 
 
   });
+
+function mdfGrp(id, gnm, flr){
+  var fllr = flr;
+  if (!flr) {
+    fllr = 'null'
+  }
+  $('#addGrpBtn').html('Modifier');
+  $('#grpModifyID').html(id);
+  $('#GrpName').val(gnm);
+  $('#GrpFiliersCombo').val(fllr);
+
+
+}
+
+
+function rmGrp(id){
+  cuteAlert1({
+    type:'question',
+    title:'Confirmation',
+    message:'please confirm to remove this Group from the database.',
+    confirmText:'remove',
+    cancelText:'cancel'
+
+  }).then((e) =>{
+    if (e == 'confirm') {
+      $.ajax({
+            type: "POST",
+            url: "assets/php/grps.php",
+            data: {
+              o:'rmGrp',i:id
+            },
+            success: function (d) {
+                // alert(d);
+                // var dt = JSON.parse(d);
+                // console.log(dt);
+                if (d == '1') {
+                  cuteToast1({
+                    type: "success",
+                    title: "Removed",
+                    message: "The Group has been remeved from the database .",
+                    timer: 5000
+                  });
+                  fillGrpsData();
+                }else {
+                  console.log(d);
+                  cuteToast1({
+                    type: "error",
+                    title: "Error",
+                    message: "removing error please see the logs for more info .",
+                    timer: 5000
+                  });
+                }
+
+            },
+            error: function (request, error) {
+                console.log ("ERROR:" + error);
+            }
+        });
+    }else {
+
+    }
+  });
+
+}
+
+function stdntsMngmnt(id){
+  document.getElementById("stdntsManagementWindow").style.display = "block";
+}
+
+$('#stdntsMngmntCloseBtn').click(function (){
+  document.getElementById("stdntsManagementWindow").style.display = "none";
+});
