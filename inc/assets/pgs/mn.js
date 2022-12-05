@@ -1008,7 +1008,13 @@ function getStdntsTable(){
 
 ///////////////////////////////////// EmploiDuTemps ///////////////////////////////////////////
 
-
+function activateAddBtn(){
+  if ($('#planingFiliersCombo').val() && $('#planingGrpsCombo').val() && $('#planingModuleCombo').val() && $('#planingEncadrantsCombo').val() && $('#planingDaysCombo').val() && $('#planingSessionsCombo').val()) {
+    $('#addNewPlanningSessionBtn').prop('disabled', false);
+  }else {
+    $('#addNewPlanningSessionBtn').prop('disabled', true);
+  }
+}
 
 function getPlanningData(){
   $.ajax({
@@ -1018,9 +1024,12 @@ function getPlanningData(){
           o:'getPlanningData'
         },
         success: function (d) {
-          // console.log(d);
+          console.log(d);
+          // TODO: get the json for each row and each column
           var dd = JSON.parse(d);
-          $('#planingFiliersCombo').html(dd.f);
+
+          // $('#planingFiliersCombo').html(dd.f);
+          // $('#PlaningTable').html(dd.planningTable);
 
         },
         error: function ( error) {
@@ -1032,6 +1041,7 @@ function getPlanningData(){
 getPlanningData();
 
 $('#planingFiliersCombo').change(function (){
+  activateAddBtn();
   $.ajax({
         type: "POST",
         url: "assets/php/planning.php",
@@ -1047,4 +1057,110 @@ $('#planingFiliersCombo').change(function (){
           console.log(JSON.stringify(error));
         }
     });
+});
+
+$('#planingGrpsCombo').change(function (){
+  activateAddBtn();
+
+});
+
+$('#planingModuleCombo').change(function (){
+  activateAddBtn();
+  $.ajax({
+        type: "POST",
+        url: "assets/php/planning.php",
+        data: {
+          o:'getTchrFromSelectedMdl',m:$('#planingModuleCombo').val()
+        },
+        success: function (d) {
+          console.log(d);
+          $('#planingEncadrantsCombo').html(d);
+
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+});
+
+$('#planingEncadrantsCombo').change(function (){
+  activateAddBtn();
+
+});
+
+$('#planingDaysCombo').change(function (){
+  activateAddBtn();
+
+});
+$('#planingSessionsCombo').change(function (){
+  activateAddBtn();
+
+});
+
+$('#addNewPlanningSessionBtn').click(function (){
+
+  $.ajax({
+        type: "POST",
+        url: "assets/php/planning.php",
+        data: {
+          o:'addNewPlanningSession',
+          f:$('#planingFiliersCombo').val(),
+          g:$('#planingGrpsCombo').val(),
+          m:$('#planingModuleCombo').val(),
+          t:$('#planingEncadrantsCombo').val(),
+          d:$('#planingDaysCombo').val(),
+          s:$('#planingSessionsCombo').val()
+        },
+        success: function (d) {
+          // console.log(d);
+          if (d == '1') {
+
+            $('#planingFiliersCombo').val('');
+            $('#planingModuleCombo').val('');
+            $('#planingDaysCombo').val('');
+            $('#planingSessionsCombo').val('');
+            $('#planingEncadrantsCombo').val('');
+            $('#planingGrpsCombo').val('');
+            activateAddBtn();
+            getPlanningData();
+            cuteToast1({
+              type: "success",
+              title: "Saved",
+              message: "The session added successfully ",
+              timer: 5000
+            });
+
+          }else if (d == '2') {
+            cuteToast1({
+              type: "error",
+              title: "Error",
+              message: "this group has a session in the same time .",
+              timer: 5000
+            });
+
+          }else if (d == '3') {
+            cuteToast1({
+              type: "error",
+              title: "Error",
+              message: "this Teacher has a session in the same time .",
+              timer: 5000
+            });
+
+          }else {
+            cuteToast1({
+              type: "error",
+              title: "Error",
+              message: "Error please see the logs for more info .",
+              timer: 5000
+            });
+          }
+
+
+
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+
 });

@@ -82,35 +82,23 @@ CREATE TABLE Modules (
 );
 
 
-CREATE TABLE TimeLinePlan (
+CREATE TABLE PlanedSeassion (
   id int AUTO_INCREMENT PRIMARY KEY,
   grp int ,
   tcher int,
-  dy varchar(20),
-  sessn varchar(20),
+  dy int,
+  sessn int,
   FOREIGN KEY (grp) REFERENCES Grps (id),
   FOREIGN KEY (tcher) REFERENCES Users (id)
 );
 
-CREATE TABLE PlanedSeassion (
-  id int AUTO_INCREMENT PRIMARY KEY,
-  TimeLinePlan int ,
-  module int ,
-  seassionTime datetime ,
-  room varchar(20) ,
-  FOREIGN KEY (TimeLinePlan) REFERENCES TimeLinePlan (id),
-   FOREIGN KEY (module) REFERENCES Modules (id)
-);
-
 CREATE TABLE SessionDone (
   id int AUTO_INCREMENT PRIMARY KEY,
+  sessn int,
   stdnt int ,
-  teacher int ,
-  module int ,
-  presence int ,
-  seasionTime datetime ,
-  room varchar(20) ,
-  FOREIGN KEY (stdnt) REFERENCES Students (id),
-  FOREIGN KEY (teacher) REFERENCES Users (id),
-  FOREIGN KEY (module) REFERENCES Modules (id)
+  presenceStatus int ,
+  arrivibgTime datetime ,
+  room varchar(20),
+  FOREIGN KEY (sessn) REFERENCES PlanedSeassion (id),
+  FOREIGN KEY (stdnt) REFERENCES Students (id)
 );
