@@ -34,7 +34,7 @@
         <tr>
             <td>'.$a['nme'].'</td>
             <td>'.$a['flr'].'</td>
-            <td><button type="button" class="btn btn-success btn-fill btn-wd" onclick="stdntsMngmnt(\''.$a["id"].'\')">'.$stdntsCount.'</button></td>
+            <td><button type="button" class="btn btn-success btn-fill btn-wd" onclick="stdntsMngmnt(\''.$a["id"].'\', \''.$a["nme"].'\')">'.$stdntsCount.'</button></td>
             <td><button type="button" class="btn btn-warning btn-fill btn-wd" onclick="mdfGrp(\''.$a["id"].'\', \''.$a["nme"].'\', \''.$a["fid"].'\')">Modifier</button></td>
 
             <td><button type="button" class="btn btn-danger btn-fill btn-wd" onclick="rmGrp(\''.$a["id"].'\')">Supprimer</button></td>

@@ -862,8 +862,10 @@ function getGrpStudentManagementData(){
     });
 }
 
-function stdntsMngmnt(id){
+function stdntsMngmnt(id, nme){
   $('#grpId').html(id);
+  $('#grpNamePopUp').html(nme);
+
   getGrpStudentManagementData();
   document.getElementById("stdntsManagementWindow").style.display = "block";
 
