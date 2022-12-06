@@ -872,6 +872,7 @@ function stdntsMngmnt(id){
 $('#stdntsMngmntCloseBtn').click(function (){
   $('#grpId').html('');
   document.getElementById("stdntsManagementWindow").style.display = "none";
+  fillGrpsData();
 });
 
 function removeStdntFromGrp(s, g, sname, gname){
@@ -1024,12 +1025,45 @@ function getPlanningData(){
           o:'getPlanningData'
         },
         success: function (d) {
-          console.log(d);
+          // console.log(d);
           // TODO: get the json for each row and each column
           var dd = JSON.parse(d);
+          // console.log(dd);
 
-          // $('#planingFiliersCombo').html(dd.f);
+
+          $('#planingFiliersCombo').html(dd.f);
           // $('#PlaningTable').html(dd.planningTable);
+
+          $('#pt11').html(dd.planningTable.r1.c1);
+          $('#pt12').html(dd.planningTable.r1.c2);
+          $('#pt13').html(dd.planningTable.r1.c3);
+          $('#pt14').html(dd.planningTable.r1.c4);
+
+          $('#pt21').html(dd.planningTable.r2.c1);
+          $('#pt22').html(dd.planningTable.r2.c2);
+          $('#pt23').html(dd.planningTable.r2.c3);
+          $('#pt24').html(dd.planningTable.r2.c4);
+
+          $('#pt31').html(dd.planningTable.r3.c1);
+          $('#pt32').html(dd.planningTable.r3.c2);
+          $('#pt33').html(dd.planningTable.r3.c3);
+          $('#pt34').html(dd.planningTable.r3.c4);
+
+          $('#pt41').html(dd.planningTable.r4.c1);
+          $('#pt42').html(dd.planningTable.r4.c2);
+          $('#pt43').html(dd.planningTable.r4.c3);
+          $('#pt44').html(dd.planningTable.r4.c4);
+
+          $('#pt51').html(dd.planningTable.r5.c1);
+          $('#pt52').html(dd.planningTable.r5.c2);
+          $('#pt53').html(dd.planningTable.r5.c3);
+          $('#pt54').html(dd.planningTable.r5.c4);
+
+          $('#pt61').html(dd.planningTable.r6.c1);
+          $('#pt62').html(dd.planningTable.r6.c2);
+          $('#pt63').html(dd.planningTable.r6.c3);
+          $('#pt64').html(dd.planningTable.r6.c4);
+
 
         },
         error: function ( error) {
