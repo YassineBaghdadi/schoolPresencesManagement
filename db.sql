@@ -35,6 +35,7 @@ CREATE TABLE Students (
   FOREIGN KEY (grp) REFERENCES Grps (id)
 );
 
+
 CREATE TABLE Famillies (
   id int AUTO_INCREMENT PRIMARY KEY,
   stdnt int ,
