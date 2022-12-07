@@ -1,4 +1,40 @@
 <script src="./assets/js/stdnts.js"></script>
+
+<style media="screen">
+  #stageDeclrWindow {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          padding-top: 100px;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+
+        #stageDeclrWindowContent {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 35%;
+        }
+
+
+        #stageDeclrWindowCloseBtn {
+
+          float: right;
+          align-self: flex-end;
+        }
+
+
+</style>
+
+
 <div class="container-fluid">
 
              <!--Début Tableau--->
@@ -18,26 +54,21 @@
                         <hr/>
                             <div class="col-12 col-md-3 text-center">
                                 <i class="ti-filter"></i>
-                                <select class="card" id="Filieres" name="Filieres">
-                                    <option>Tous les Filières</option>
-                                    <option>Équitation</option>
-                                    <option>Nutrition des cheveux</option>
-                                    <option>Filiere1</option>
-                                    <option>Filiere2</option>
+                                <select class="card fltrCmb" id="Filieres" >
+                                  <option value="">Tous les Filières</option>
+
+
                                   </select>
                             </div>
                             <div class="col-12 col-md-3 text-center">
                                 <i class="ti-filter"></i>
-                                <select class="card" id="Groupes" name="Groupes">
-                                    <option>Tous les Groupes</option>
-                                    <option>Groupe A</option>
-                                    <option>Groupe B</option>
-                                    <option>Groupe C</option>
+                                <select class="card fltrCmb" id="Groupes" name="Groupes">
+                                    <option value="">Tous les Groupes</option>
                                   </select>
                             </div>
                             <div class="col-12 col-md-3 text-center">
                                 <select class="card" id="Statuts" name="Statuts">
-                                    <option>Tous les Statuts</option>
+                                    <option  value="">Tous les Statuts</option>
                                     <option>Pas d'Absence encours</option>
                                     <option>Absent pendant X séance(s)</option>
                                     <option>Absence Maladie pour X jours</option>
@@ -45,15 +76,15 @@
                                     <option>Stage</option>
                                   </select>
                             </div>
-                            <div class="col-md-2 text-center">
-                                <input type="text" id="datefiltre" name="datefiltre" placeholder="" class="card">
+                            <div class="col-md-3 text-center">
+                                <input type="text" id="search" name="datefiltre" placeholder="" class="card">
                             </div>
 
-                            <div class="col-md-1">
+                            <!-- <div class="col-md-1">
                                 <div class="text-center">
                                     <button type="submit" class="ti-search col-sm-12"></button>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <hr/>
 
@@ -61,12 +92,12 @@
                                   <label>Action groupée :</label>
                             </div>
                             <div class="col-12 col-md-6 text-center">
-                                <select class="card" name="Actionchoix" class="stdntCheckBox">
-                                    <option></option>
-                                    <option>Déclarer une période de stage</option>
-                                    <option>Passer à la deuxiéme année</option>
-                                    <option>Passer à la troisiéme année</option>
-                                    <option>Déclarer comme sortant</option>
+                                <select class="card" name="Actionchoix" id="Actionchoix">
+                                    <option value="">Choose an action</option>
+                                    <option value="1">Déclarer une période de stage</option>
+                                    <option value="2">Passer à la deuxiéme année</option>
+                                    <option value="3">Passer à la troisiéme année</option>
+                                    <option value="4">Déclarer comme sortant</option>
                                   </select>
                             </div>
 
@@ -85,8 +116,8 @@
                                     <th>Assiduité</th>
                                     <th>Stagiaire</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody id="stdntsTbl">
+                                    <!-- <tr>
                                         <td>
                                           <input type="checkbox" id="checkbox">
                                         </td>
@@ -100,85 +131,13 @@
                                         <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
                                         <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
 
-                                    </tr>
+                                    </tr> -->
 
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Faris Bensoussa</td>
-                                        <td>Nutrition des cheveux</td>
-                                        <td>Groupe A</td>
-                                        <td class="text-center">4</td>
-                                        <td class="text-center">1</td>
-                                        <td>Absent pendant 2 séance(s)</td>
-                                        <td class="text-center">15</td>
-                                        <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>Groupe D</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">4</td>
-                                        <td>Absence Maladie pour 2 jours</td>
-                                        <td class="text-center">20</td>
-                                        <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
 
-                                    </tr>
-
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>Groupe D</td>
-                                        <td class="text-center" >3</td>
-                                        <td class="text-center" >4</td>
-                                        <td>Absence Maladie pour 1 jours</td>
-                                        <td class="text-center">20</td>
-                                        <td ><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>Groupe D</td>
-                                        <td class="text-center" >3</td>
-                                        <td class="text-center" >4</td>
-                                        <td>Pas d'Absence encours</td>
-                                        <td class="text-center">20</td>
-                                        <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>Groupe D</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">4</td>
-                                        <td>Pas d'Absence encours</td>
-                                        <td class="text-center">20</td>
-                                        <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="checkbox"></td>
-                                        <td>Najat Darouche</td>
-                                        <td>Équitation</td>
-                                        <td>Groupe D</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">4</td>
-                                        <td>Pas d'Absence encours</td>
-                                        <td class="text-center">20</td>
-                                        <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-                                        <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
-                                    </tr>
                                 </tbody>
                             </table>
+
+                            <!-- <button type="button" name="button" id="tstBtn">Test</button> -->
                         </div>
                     </div>
                 </div>
@@ -189,15 +148,18 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
-                            <div class="card">
-                                <div class="content">  <!--clique Absent --->
+                            <div class="card" id="stageDeclrWindow">
+                                <div class="content" id="stageDeclrWindowContent">  <!--clique Absent --->
+                                    <button type="button" class="btn btn-danger" name="button" id="stageDeclrWindowCloseBtn">X</button>
+
+                                    <hr>
                                     <div class="content table-responsive table-full-width">
                                         <div class="header">
                                             <h4 class="title">Déclarer une période de stage</h4>
                                         </div>
                                         <hr/>
                                         <div class="header">
-                                            <h4 class="title">merci de choisir la période de stage pour le 20 Stagiaire séléctionner</h4>
+                                            <h4 class="title">merci de choisir la période de stage pour les <span id="stdntCount"></span> Stagiaire séléctionner</h4>
                                         </div>
                                         <hr/>
                                           <div class="row">
@@ -208,7 +170,7 @@
                                                 <input  name="dateend" Id="dateend" type="date" class="form-control border-input">
                                             </div>
                                             <div class="col-lg-4 col-sm-12">
-                                            <button type="submit" class="btn btn-sm-6 btn-info">Valider</button>
+                                            <button type="submit" class="btn btn-sm-6 btn-info" id="stageDeclrValidationBtn">Valider</button>
                                             </div>
                                         </div>
                                     </div>

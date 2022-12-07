@@ -197,19 +197,45 @@ const id1 = () => {
 
 
 
+function getStdntsFilterCombos(){
 
+  $.ajax({
+        type: "POST",
+        url: "assets/php/stdnts.php",
+        data: {
+          o:'getStdntsFilterCombos',
+
+        },
+        success: function (d) {
+            // alert(d);
+            var dd = JSON.parse(d);
+
+            $('#Filieres').html(dd.a);
+            $('#Groupes').html(dd.b);
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+
+}
+
+getStdntsFilterCombos();
 
 
 
 
 
 function getStdntsTable(){
-
+  // console.log($('#Filieres').val());
   $.ajax({
         type: "POST",
         url: "assets/php/stdnts.php",
         data: {
-          o:'getStdntsTable'
+          o:'getStdntsTable',
+          f: $('#Filieres').val(),
+          g: $('#Groupes').val(),
+          k: $('#search').val()
         },
         success: function (d) {
             // alert(d);
@@ -225,6 +251,69 @@ function getStdntsTable(){
 }
 
 getStdntsTable();
+
+
+$('#Actionchoix').change(function (){
+
+  var selected = [];
+  $('.stdntCheckBox').each(function () {
+    if (this.checked) {
+      selected.push($(this).val());
+    }
+  });
+
+  if (selected.length > 0) {
+    if ($(this).val() == '1') {
+      $('#stdntCount').html(selected.length);
+      document.getElementById("stageDeclrWindow").style.display = "block";
+    }else if ($(this).val() == '2') {
+
+    }else if ($(this).val() == '3') {
+
+    }else if ($(this).val() == '4') {
+
+    }
+  }else {
+    cuteToast1({
+                    type: "info",
+                    title: "Info",
+                    message: "Please select one or more student first .",
+                    timer: 5000
+                  });
+  }
+
+  $(this).val('');
+});
+
+$('#stageDeclrWindowCloseBtn').click(function (){
+  $('#grpId').html('');
+  document.getElementById("stageDeclrWindow").style.display = "none";
+
+});
+
+$('#stageDeclrValidationBtn').click(function (){
+  var selected = [];
+  $('.stdntCheckBox').each(function () {
+    if (this.checked) {
+      selected.push($(this).val());
+    }
+  });
+  console.log(selected);
+});
+
+$('#Filieres').change(function (){
+  // alert('changed');
+  getStdntsTable();
+});
+
+$('#Groupes').change(function (){
+  getStdntsTable();
+});
+
+$('#search').on('input', function (){
+  getStdntsTable();
+});
+
 
 
 // TODO: to be continued .......

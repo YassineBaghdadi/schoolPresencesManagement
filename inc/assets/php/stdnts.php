@@ -11,10 +11,40 @@
     $conn= mysqli_connect($c[0], $c[1], $c[2], $c[3]);
 
     if ($_POST['o'] == 'getStdntsTable') {
+      $qr = 'select s.id, concat(s.fname , " ", s.lname) as stdName, g.nme as grp, f.nme as flr from Students s left join Grps g on s.grp = g.id left join Filiers f on g.filier = f.id ';
+      if ($_POST['f'] != '') {
+        if ($_POST['f'] == 'null') {
+          $qr .= 'where g.filier is null ';
+        }else {
+          $qr .= 'where f.id = '.$_POST['f'].' ';
+        }
 
-      $qr = mysqli_query($conn, 'select s.id, concat(s.fname , " ", s.lname) as stdName, g.nme as grp, f.nme as flr from Students s left join Grps g on s.grp = g.id left join Filiers f on g.filier = f.id;');
+      }else {
+        $qr .= 'where 1 = 1  ';
+      }
+
+      if ($_POST['g'] != '') {
+        if ($_POST['g'] == 'null') {
+          $qr .= 'and s.grp is null ';
+        }else {
+          $qr .= 'and g.id = '.$_POST['g'].' ';
+        }
+
+      }else {
+        $qr .= 'and 1 = 1  ';
+      }
+
+      if ($_POST['k'] != '') {
+        $qr .= 'and (s.fname like "%'.$_POST['k'].'%" or s.lname like "%'.$_POST['k'].'%") ';
+      }else {
+        $qr .= 'and 1 = 1 ';
+      }
+
+      // echo $qr;
+
+      $dt = mysqli_query($conn, $qr);
       $tbl = '';
-      while ($a = mysqli_fetch_array($qr)) {
+      while ($a = mysqli_fetch_array($dt)) {
         $abs = mysqli_fetch_assoc(mysqli_query($conn, 'select count(id) as c from SessionDone where stdnt = '.$a["id"].' and presenceStatus = 0'))['c'];
         $lates = mysqli_fetch_assoc(mysqli_query($conn, 'select count(id) as c from SessionDone where stdnt = '.$a["id"].' and presenceStatus = 2'))['c'];
         // TODO: calcul the ponts ......
@@ -28,11 +58,11 @@
             <td>'.$a["flr"].'</td>
             <td>'.$a["grp"].'</td>
             <td class="text-center">'.$abs.'</td>
-            <td class="text-center">'.$tbl.'</td>
-            <td>Absence Maladie pour 2 jours</td>
-            <td class="text-center">20</td>
-            <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
-            <td><a class="btn btn-warning" href="ModifierStagaire.html">Modifier</a></td>
+            <td class="text-center">'.$lates.'</td>
+            <td>xxxxx</td>
+            <td class="text-center">xx</td>
+            <td><button class="btn btn-info"  onclick()>Détails</button></td>
+            <td><button class="btn btn-warning" onclick()>Modifier</button></td>
 
         </tr>
         ';
@@ -41,6 +71,28 @@
 
       echo $tbl;
 
+
+    }
+
+    if ($_POST['o'] == 'getStdntsFilterCombos') {
+
+      $flrs = '<option value="">Tous les Filières</option><option value="null">None</option>';
+      $grps = '<option value="">Tous les Groupes</option><option value="null">None</option>';
+
+      $dt = mysqli_query($conn, 'select id, nme from Filiers;');
+      while ($a = mysqli_fetch_array($dt)) {
+        $flrs .= '
+          <option value="'.$a["id"].'">'.$a["nme"].'</option>
+        ';
+      }
+      $dt = mysqli_query($conn, 'select id, nme from Grps;');
+      while ($a = mysqli_fetch_array($dt)) {
+        $grps .= '
+          <option value="'.$a["id"].'">'.$a["nme"].'</option>
+        ';
+      }
+      $out = array('a' => $flrs, 'b' => $grps);
+      echo json_encode($out);
 
     }
 
