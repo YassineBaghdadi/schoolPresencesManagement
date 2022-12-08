@@ -1,24 +1,10 @@
 use INC;
-drop table PlanedSeassion;
-drop table TimeLinePlan;
-drop table SessionDone;
-CREATE TABLE PlanedSeassion (
-  id int AUTO_INCREMENT PRIMARY KEY,
-  grp int ,
-  tcher int,
-  dy int,
-  sessn int,
-  FOREIGN KEY (grp) REFERENCES Grps (id),
-  FOREIGN KEY (tcher) REFERENCES Users (id)
-);
 
-CREATE TABLE SessionDone (
-  id int AUTO_INCREMENT PRIMARY KEY,
-  sessn int,
-  stdnt int ,
-  presenceStatus int ,
-  arrivibgTime datetime ,
-  room varchar(20),
-  FOREIGN KEY (sessn) REFERENCES PlanedSeassion (id),
-  FOREIGN KEY (stdnt) REFERENCES Students (id)
-);
+alter table Students
+  add column sex varchar(10),
+  add column bd date,
+  add column CNE varchar(20),
+  add column natinality varchar(30),
+  add column adrss varchar(100),
+  add column paidAmount int,
+  add column fatherFname varchar(10),

@@ -316,4 +316,17 @@ $('#search').on('input', function (){
 
 
 
+$('#addNewStdntBtn').click(function (){
+  document.getElementById("newStdntWindow").style.display = "block";
+
+});
+
+$('#newStdntWindowCloseBtn').click(function (){
+  $('#grpId').html('');
+  document.getElementById("newStdntWindow").style.display = "none";
+
+});
+
+
+
 // TODO: to be continued .......
