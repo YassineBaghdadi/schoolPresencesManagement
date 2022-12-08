@@ -1,10 +1,21 @@
 use INC;
-
+drop table Famillies ;
 alter table Students
   add column sex varchar(10),
   add column bd date,
   add column CNE varchar(20),
+  add column massar varchar(30),
   add column natinality varchar(30),
   add column adrss varchar(100),
   add column paidAmount int,
-  add column fatherFname varchar(10),
+  add column fatherFname varchar(60),
+  add column fatherLname varchar(60),
+  add column fatherPhone varchar(60),
+  add column fatherMail varchar(60),
+  add column matherFname varchar(60),
+  add column matherLname varchar(60),
+  add column matherPhone varchar(60),
+  add column matherMail varchar(60),
+  add column urgenceName varchar(60),
+  add column urgencePhone varchar(60),
+  add column urgenceEmail varchar(60) ;

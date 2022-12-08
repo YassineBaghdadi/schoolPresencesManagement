@@ -240,8 +240,11 @@ function getStdntsTable(){
         success: function (d) {
             // alert(d);
             // console.log(d);
+            var dd = JSON.parse(d);
 
-            $('#stdntsTbl').html(d);
+            $('#stdntsTbl').html(dd.tbl);
+            $('#newStdntWindowFilieres').html(dd.flr);
+            $('#newStdntWindowGrps').html(dd.grps);
         },
         error: function ( error) {
           console.log(JSON.stringify(error));
@@ -327,6 +330,263 @@ $('#newStdntWindowCloseBtn').click(function (){
 
 });
 
+$('#newStdntWindowFilieres').change(function (){
+  $.ajax({
+        type: "POST",
+        url: "assets/php/stdnts.php",
+        data: {
+          o:'getGrpsNames',
+          f: $('#newStdntWindowFilieres').val(),
+
+        },
+        success: function (d) {
+
+            $('#newStdntWindowGrps').html(d);
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+});
+
+$('#newStdntWindowNom').on('input', function (){
+  $('#newStdntWindowFatherLname').val($('#newStdntWindowNom').val());
+
+
+});
+
+
+$('#newStdntWindowCNE').on('input', function (){
+  if ($('#newStdntWindowCNE').val()) {
+    $.ajax({
+          type: "POST",
+          url: "assets/php/stdnts.php",
+          data: {
+            o:'verifyCne',
+            c: $('#newStdntWindowCNE').val(),
+
+          },
+          success: function (d) {
+
+            if (d == '1') {
+              $('#newStdntWindowCNEErr').html('Invalid');
+            }else {
+              $('#newStdntWindowCNEErr').html('');
+            }
+
+          },
+          error: function ( error) {
+            console.log(JSON.stringify(error));
+          }
+      });
+
+
+  }else {
+
+    $('#newStdntWindowCNEErr').html('');
+  }
+});
+
+$('#saveNewStdntBtn').click(function (){
+  var rr = 0;
+  if (!$('#newStdntWindowNomCompletUrgence').val() || !$('#newStdntWindowTelUrgence').val() || !$('#newStdntWindowPrenom').val() || !$('#newStdntWindowNom').val() || !$('#newStdntWindowBD').val() || !$('#newStdntWindowPhone').val() || !$('#newStdntWindowCNE').val()|| !$('#newStdntWindowNationalite').val() || !$('#newStdntWindowAdress').val() || !$('#newStdntWindowCity').val()|| !$('#newStdntWindowPaid').val() || !$('#newStdntWindowZip').val()) {
+
+
+    if (!$('#newStdntWindowNomCompletUrgence').val()) {
+      rr = 600;
+     $('#newStdntWindowNomCompletUrgenceErr').html('Required');
+
+   }else {
+     $('#newStdntWindowNomCompletUrgenceErr').html('');
+   }
+    if (!$('#newStdntWindowTelUrgence').val()) {
+      rr = 600;
+     $('#newStdntWindowTelUrgenceErr').html('Required');
+
+   }else {
+     $('#newStdntWindowTelUrgenceErr').html('');
+   }
+
+   //  if (!$('#newStdntWindowEMailUrgence').val()) {
+   //    rr = 600;
+   //   $('#newStdntWindowEMailUrgenceErr').html('Required');
+   //
+   // }else {
+   //   $('#newStdntWindowEMailUrgenceErr').html('');
+   // }
+
+    if (!$('#newStdntWindowPrenom').val()) {
+      rr = 70;
+      $('#newStdntWindowPrenomErr').html('Required');
+
+    }else {
+      $('#newStdntWindowPrenomErr').html('');
+    }
+
+     if (!$('#newStdntWindowNom').val()) {
+       rr = 70;
+      $('#newStdntWindowNomErr').html('Required');
+
+    }else {
+      $('#newStdntWindowNomErr').html('');
+    }
+
+     if (!$('#newStdntWindowBD').val()) {
+       rr = 70;
+      $('#newStdntWindowBDErr').html('Required');
+
+    }else {
+      $('#newStdntWindowBDErr').html('');
+    }
+
+     if (!$('#newStdntWindowPhone').val()) {
+       rr = 70;
+      $('#newStdntWindowPhoneErr').html('Required');
+
+    }else {
+      $('#newStdntWindowPhoneErr').html('');
+    }
+     if (!$('#newStdntWindowCNE').val()) {
+       rr = 70;
+      $('#newStdntWindowCNEErr').html('Required');
+
+    }else {
+      $('#newStdntWindowCNEErr').html('');
+    }
+     if (!$('#newStdntWindowNationalite').val()) {
+       rr = 70;
+      $('#newStdntWindowNationaliteErr').html('Required');
+
+    }else {
+      $('#newStdntWindowNationaliteErr').html('');
+    }
+     if (!$('#newStdntWindowAdress').val()) {
+       rr = 70;
+      $('#newStdntWindowAdressErr').html('Required');
+
+    }else {
+      $('#newStdntWindowAdressErr').html('');
+    }
+     if (!$('#newStdntWindowCity').val()) {
+       rr = 70;
+      $('#newStdntWindowCityErr').html('Required');
+
+    }else {
+      $('#newStdntWindowCityErr').html('');
+    }
+     if (!$('#newStdntWindowZip').val()) {
+       rr = 70;
+      $('#newStdntWindowZipErr').html('Required');
+
+    }else {
+      $('#newStdntWindowZipErr').html('');
+    }
+     if (!$('#newStdntWindowPaid').val()) {
+       rr = 70;
+      $('#newStdntWindowPaidErr').html('Required');
+
+    }else {
+      $('#newStdntWindowPaidErr').html('');
+    }
+
+    if (rr) {
+      document.getElementById('newStdntWindowContent').scrollTo({top: rr, behavior: 'smooth'});
+
+    }
+  }else {
+    var data = {
+      'fname':$('#newStdntWindowPrenom').val(),
+      'lname':$('#newStdntWindowNom').val(),
+      'grp':$('#newStdntWindowGrps').val(),
+      'sx':$('#newStdntWindowSex').val(),
+      'bd':$('#newStdntWindowBD').val(),
+      'phne':$('#newStdntWindowPhone').val(),
+      'mail':$('#newStdntWindowEmail').val(),
+      'cne':$('#newStdntWindowCNE').val(),
+      'msr':$('#newStdntWindowMassar').val(),
+      'orgn':$('#newStdntWindowNationalite').val(),
+      'adrs':$('#newStdntWindowAdress').val(),
+      'cty':$('#newStdntWindowCity').val(),
+      'zip':$('#newStdntWindowZip').val(),
+      'paidAmnt':$('#newStdntWindowPaid').val(),
+      'fthrfname':$('#newStdntWindowFatherFname').val(),
+      'fthrlname':$('#newStdntWindowFatherLname').val(),
+      'fthrPhne':$('#newStdntWindowFatherPhone').val(),
+      'fthrMail':$('#newStdntWindowFatherMail').val(),
+      'mtherfname':$('#newStdntWindowMotherFname').val(),
+      'mthrlname':$('#newStdntWindowMotherLname').val(),
+      'mthrphne':$('#newStdntWindowMotherPhone').val(),
+      'mthrmail':$('#newStdntWindowMotherMail').val(),
+      'urgnceName':$('#newStdntWindowNomCompletUrgence').val(),
+      'urgncePhne':$('#newStdntWindowTelUrgence').val(),
+      'urgnceemail':$('#newStdntWindowEMailUrgence').val(),
+
+    };
+    if ($('#modifyStdntID').html()) {
+      data['o'] = 'mdfStdnt';
+    }else {
+      data['o'] = 'addStdnt';
+    }
+    $.ajax({
+          type: "POST",
+          url: "assets/php/stdnts.php",
+          data: data,
+          success: function (d) {
+            console.log(d);
+            if (d == '1') {
+              document.getElementById("newStdntWindow").style.display = "none";
+              getStdntsTable();
+              cuteToast1({
+                type: "success",
+                title: "Added",
+                message: "the student Added to the database",
+                timer: 5000
+              });
+              $('#newStdntWindowPrenom').val("");
+              $('#newStdntWindowNom').val("");
+              $('#newStdntWindowGrps').val("");
+              $('#newStdntWindowSex').val("");
+              $('#newStdntWindowBD').val("");
+              $('#newStdntWindowPhone').val("");
+              $('#newStdntWindowEmail').val("");
+              $('#newStdntWindowCNE').val("");
+              $('#newStdntWindowMassar').val("");
+              $('#newStdntWindowNationalite').val("");
+              $('#newStdntWindowAdress').val("");
+              $('#newStdntWindowCity').val("");
+              $('#newStdntWindowZip').val("");
+              $('#newStdntWindowPaid').val("");
+              $('#newStdntWindowFatherFname').val("");
+              $('#newStdntWindowFatherLname').val("");
+              $('#newStdntWindowFatherPhone').val("");
+              $('#newStdntWindowFatherMail').val("");
+              $('#newStdntWindowMotherFname').val("");
+              $('#newStdntWindowMotherLname').val("");
+              $('#newStdntWindowMotherPhone').val("");
+              $('#newStdntWindowMotherMail').val("");
+              $('#newStdntWindowNomCompletUrgence').val("");
+              $('#newStdntWindowTelUrgence').val("");
+              $('#newStdntWindowEMailUrgence').val("");
+            }else {
+              cuteToast1({
+                type: "error",
+                title: "Error",
+                message: "Error please see the logs for more info .",
+                timer: 5000
+              });
+            }
+          },
+          error: function ( error) {
+            console.log(JSON.stringify(error));
+          }
+      });
+  }
+
+
+
+
+
+});
 
 
 // TODO: to be continued .......
