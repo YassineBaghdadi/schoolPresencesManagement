@@ -558,7 +558,7 @@ $('#saveNewStdntBtn').click(function (){
               $('#newStdntWindowPaid').val("");
               $('#newStdntWindowFatherFname').val("");
               $('#newStdntWindowFatherLname').val("");
-              $('#newStdntWindowFatherPhone').val("");
+              $('#newStdntWindowFatherPhone').val("");1
               $('#newStdntWindowFatherMail').val("");
               $('#newStdntWindowMotherFname').val("");
               $('#newStdntWindowMotherLname').val("");
