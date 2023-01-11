@@ -96,72 +96,6 @@
 
       }
 
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 1 and sessn = 1'))) {
-      //   $pt11 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 1 and sessn = 2'))) {
-      //   $pt12 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 1 and sessn = 3'))) {
-      //   $pt13 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 1 and sessn = 4'))) {
-      //   $pt14 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-
-
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 2 and sessn = 1'))) {
-      //   $pt21 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 2 and sessn = 2'))) {
-      //   $pt22 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 2 and sessn = 3'))) {
-      //   $pt23 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 2 and sessn = 4'))) {
-      //   $pt24 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      //
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 3 and sessn = 1'))) {
-      //   $pt31 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 3 and sessn = 2'))) {
-      //   $pt32 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 3 and sessn = 3'))) {
-      //   $pt33 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 3 and sessn = 4'))) {
-      //   $pt34 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      //
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 4 and sessn = 1'))) {
-      //   $pt41 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 4 and sessn = 2'))) {
-      //   $pt42 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 4 and sessn = 3'))) {
-      //   $pt43 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 4 and sessn = 4'))) {
-      //   $pt44 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      //
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 5 and sessn = 1'))) {
-      //   $pt51 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 5 and sessn = 2'))) {
-      //   $pt52 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 5 and sessn = 3'))) {
-      //   $pt53 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 5 and sessn = 4'))) {
-      //   $pt54 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      //
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 6 and sessn = 1'))) {
-      //   $pt61 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
-      // while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 6 and sessn = 2'))) {
-      //   $pt62 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 6 and sessn = 3'))) {
-      //   $pt63 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }while ($a = mysqli_fetch_array(mysqli_query($conn, $qr.'s.dy = 6 and sessn = 4'))) {
-      //   $pt64 .= '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
-      // }
 
 
 
@@ -224,6 +158,19 @@
         }
 
       }
+
+
+
+    }
+
+    if ($_POST['o'] == 'getSionDetails') {
+      $ps = mysqli_fetch_assoc(mysqli_query($conn, 'select concat(u.fname, " ", u.lname) as tcher, g.nme as grp, f.nme as flr, m.nme as mdl, p.dy, p.sessn as tme from
+      PlanedSeassion p inner join Grps g on p.grp = g.id inner join Filiers f on g.filier = f.id inner join Users u on p.tcher = u.id inner join Modules m on m.teacher = u.id where p.id = '.$_POST['i']));
+      $dys = array('1' => "LUNDI", '2' => "Mardi", '3' => "MERCREDI", '4' => "JEUDI", '5' => "VENDREDI", '6' => "SAMEDI");
+
+
+       echo json_encode(array('tcher' => , ));
+
 
 
 

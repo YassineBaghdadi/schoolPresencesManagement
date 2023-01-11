@@ -196,10 +196,6 @@ const id1 = () => {
 };
 
 
-
-
-
-
 function activateAddBtn(){
   if ($('#planingFiliersCombo').val() && $('#planingGrpsCombo').val() && $('#planingModuleCombo').val() && $('#planingEncadrantsCombo').val() && $('#planingDaysCombo').val() && $('#planingSessionsCombo').val()) {
     $('#addNewPlanningSessionBtn').prop('disabled', false);
@@ -264,6 +260,45 @@ function getPlanningData(){
 }
 
 getPlanningData();
+
+function getSessnDetails(id){
+
+  $.ajax({
+        type: "POST",
+        url: "assets/php/planning.php",
+        data: {
+          o:'getSionDetails',i:id
+        },
+        success: function (d) {
+          // console.log(d);
+          try {
+            var dd = JSON.parse(d);
+            $('.overlay').show();
+            $('#popUpTcherName').html(dd.tcher);
+            $('#popUpGrpName').html(dd.grp);
+            $('#popUpFlrName').html(dd.flr);
+            $('#popUpMdlName').html(dd.mdl);
+            $('#popUpDyName').html(dd.dy);
+            $('#popUpTmeName').html(dd.tme);
+            $('#stdntsTblBdy').html(dd.tbl);
+          } catch (e) {
+            console.log(d);
+            cuteToast1({
+              type: "error",
+              title: "Error",
+              message: "e",
+              timer: 5000
+            });
+          }
+
+
+        },
+        error: function ( error) {
+          console.log(JSON.stringify(error));
+        }
+    });
+}
+
 
 $('#planingFiliersCombo').change(function (){
   activateAddBtn();
@@ -389,3 +424,9 @@ $('#addNewPlanningSessionBtn').click(function (){
     });
 
 });
+
+
+
+$('#clsBtn').click(function () {
+    $('.overlay').hide();
+})

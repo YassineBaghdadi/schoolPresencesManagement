@@ -177,3 +177,265 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- the pop up here ---------------------------------------------------------------------------------------- -->
+                <style>
+                  #clsBtn {
+                      width:27px;
+                      height:27px;
+                      cursor:pointer;
+                      float: right;
+                      transition: transform .3s ease-in-out;
+                    }
+                    #clsBtn:hover {
+                      transform: rotate(360deg);
+                    }
+
+
+
+                    .overlay {
+                        display:none;
+                        position: fixed;
+                        left: 0px;
+                        top: 0px;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 9999;
+                        background:rgba(0, 0, 0, 0.8);
+                    }
+
+                    .popup {
+                        position:relative;
+                        width:75%;
+                        top:8%;
+                        text-align:center;
+                        border-radius: 10px;
+                        background:rgb(240,240,240);
+                        box-shadow: 0px 0px 5px 0px gray;
+
+
+                    }
+
+
+                    #tblDiv {
+                        width:100%;
+                        margin: 5px;
+                        table-layout: fixed;
+                        border-collapse: collapse;
+                      }
+                      #tblDiv tbody {
+                        display: block;
+                        overflow: auto;
+                        width: 100%;
+                        height: 270px;
+                      }
+                      #tblDiv thead tr {
+                        display: block;
+                      }
+                      #tblDiv th {
+                        font-weight: bold;
+                      }
+                      #tblDiv th,
+                      #tblDiv td {
+                        text-align: center;
+                        width: 200px;
+                      }
+
+                  </style>
+                  <div class='overlay'>
+                      <div class='container-fluid popup'>
+                        <br>
+                        <div ><img src="assets/img/cls.png" alt=""  id="clsBtn"></div>
+                        <br>
+                        <br>
+                        <div class="row">
+                          <div class="col-lg-4 col-sm-6">
+                              <div class="card">
+                                  <div class="content">
+                                      <div class="row">
+
+                                          <div class="col-xs-9">
+                                              <div class="numbers" id="popUpTcherName">
+
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="footer">
+                                          <hr />
+                                          <div class="stats">
+                                              <i class=""></i>L'Enseignant
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="card">
+                                    <div class="content">
+                                        <div class="row">
+
+                                            <div class="col-xs-9">
+                                                <div class="numbers" id="popUpGrpName">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr />
+                                            <div class="stats">
+                                                <i class=""></i>Le Groupe
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="card">
+                                    <div class="content">
+                                        <div class="row">
+
+                                            <div class="col-xs-9">
+                                                <div class="numbers" id="popUpFlrName">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr />
+                                            <div class="stats">
+                                                <i class=""></i>La Filière
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-4 col-sm-6">
+                              <div class="card">
+                                  <div class="content">
+                                      <div class="row">
+
+                                          <div class="col-xs-9">
+                                              <div class="numbers" id="popUpMdlName">
+
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="footer">
+                                          <hr />
+                                          <div class="stats">
+                                              <i class=""></i>Le Module
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-sm-6">
+                              <div class="card">
+                                  <div class="content">
+                                      <div class="row">
+
+                                          <div class="col-xs-9">
+                                              <div class="numbers" id="popUpDyName">
+
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="footer">
+                                          <hr />
+                                          <div class="stats">
+                                              <i class=""></i>Le Jour
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-sm-6">
+                              <div class="card">
+                                  <div class="content">
+                                      <div class="row">
+
+                                          <div class="col-xs-9">
+                                              <div class="numbers" id="popUpTmeName">
+
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="footer">
+                                          <hr />
+                                          <div class="stats">
+                                              <i class=""></i>Le Temp
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                        </div>
+
+
+
+
+                   <!--Début Tableau--->
+                      <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Liste du Stagiers</h4>
+                                </div>
+
+                                <br>
+
+                                <!-- <div class="content table-responsive table-full-width" id="tblDiv" style="overflow-y:scroll; height:370px;" > -->
+                                <div class="content table-responsive table-full-width" id="tblDiv">
+
+                                    <table class="table table-striped" id="tblDiv">
+                                        <thead>
+                                            <th>Nom Prénom</th>
+                                            <th>Filière</th>
+                                            <th>Groupe</th>
+                                            <th>Statut</th>
+                                            <th>Points discipline</th>
+                                            <th>Billet</th>
+                                            <th>Stagiaire</th>
+                                        </thead>
+                                        <tbody id="stdntsTblBdy">
+                                            <tr>
+                                                <td>BOURIR Karim</td>
+                                                <td>Équitation</td>
+                                                <td>A</td>
+                                                <td>Absent pendant 3 séance(s)</td>
+                                                <td>20</td>
+                                                <td><button type="submit" class="btn btn-success">Billet</button></td>
+                                                <td><a class="btn btn-info" href="DetailsStagaire.html">Détails</a></td>
+
+                                            </tr>
+                                            
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                      </div>
+                      </div>
+                  </div>
