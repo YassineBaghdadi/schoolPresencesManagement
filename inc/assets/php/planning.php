@@ -90,7 +90,8 @@
           $clr = 'warning';
           $c = 1 ;
         }
-        $pt['r'.$a['dy']]['c'.$a['sessn']] .= '<p><button type="button" class="btn btn-'.$clr.' btn-sm col-sm-12" style="margin-top:3px;margin-bottom:3px;" onclick=getSessnDetails("\''.$a["sid"].'\'");><b>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
+        // $pt['r'.$a['dy']]['c'.$a['sessn']] .= '<p><button type="button" class="btn btn-'.$clr.' btn-sm col-sm-12" style="margin-top:3px;margin-bottom:3px;" onclick=getSessnDetails("\''.$a["sid"].'\'");><b>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
+        $pt['r'.$a['dy']]['c'.$a['sessn']] .= '<p><button type="button" class="btn btn-'.$clr.' btn-sm col-sm-12" style="margin-top:3px;margin-bottom:3px;" onclick=getSessnDetails("\''.$a["sid"].'\'");><b>'.$a["gname"].'</small></button></p>';
         // echo '<p><button type="button" class="btn btn-success btn-sm col-sm-12" onclick=getSessnDetails("\''.$a["sid"].'\'");><small>'.$a["gname"].'/'.$a["tcher"].' ('.$a["mdl"].')</small></button></p>';
 
 
@@ -164,12 +165,37 @@
     }
 
     if ($_POST['o'] == 'getSionDetails') {
-      $ps = mysqli_fetch_assoc(mysqli_query($conn, 'select concat(u.fname, " ", u.lname) as tcher, g.nme as grp, f.nme as flr, m.nme as mdl, p.dy, p.sessn as tme from
-      PlanedSeassion p inner join Grps g on p.grp = g.id inner join Filiers f on g.filier = f.id inner join Users u on p.tcher = u.id inner join Modules m on m.teacher = u.id where p.id = '.$_POST['i']));
+      $ps = mysqli_fetch_assoc(mysqli_query($conn, 'select concat(u.fname, " ", u.lname) as tcher, g.nme as grp, p.grp as grpId, f.nme as flr, u.module as mdl, p.dy, p.sessn as tme from
+      PlanedSeassion p
+      inner join Grps g on p.grp = g.id
+      left join Filiers f on g.filier = f.id
+      left join Users u on p.tcher = u.id where p.id = '.$_POST['i']));
       $dys = array('1' => "LUNDI", '2' => "Mardi", '3' => "MERCREDI", '4' => "JEUDI", '5' => "VENDREDI", '6' => "SAMEDI");
+      $tme = array('1' => "08:30-10:30", '2' => "10:30-12:30", '3' => "14:30-16:30", '4' => "16:30-18:30");
+
+      $dt = mysqli_query($conn, 'select id, concat(fname, " ", lname) as stdName, CNE, massar, registrationDate from Students where grp = '.$ps['grpId']);
+      $tbl = '';
+      while ($a = mysqli_fetch_array($dt)) {
+        $tbl .= '<tr>
+            <td>'.$a["id"].'</td>
+            <td>'.$a["stdName"].'</td>
+            <td>'.$a["CNE"].'</td>
+            <td>'.$a["massar"].'</td>
+            <td>'.$a["registrationDate"].'</td>
 
 
-       echo json_encode(array('tcher' => , ));
+        </tr>';
+      }
+
+       echo json_encode(array('tcher' => $ps['tcher'],
+       'grp' => $ps['grp'],
+       'flr' => $ps['flr'],
+       'mdl' => $ps['mdl'],
+       'dy' => $dys[$ps['dy']],
+       'tme' => $tme[$ps['tme']],
+       'tbl' => $tbl
+     ));
+
 
 
 

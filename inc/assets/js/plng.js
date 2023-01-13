@@ -270,7 +270,7 @@ function getSessnDetails(id){
           o:'getSionDetails',i:id
         },
         success: function (d) {
-          // console.log(d);
+          console.log(d);
           try {
             var dd = JSON.parse(d);
             $('.overlay').show();

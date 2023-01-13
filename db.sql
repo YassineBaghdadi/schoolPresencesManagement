@@ -50,6 +50,7 @@ CREATE TABLE Students (
   urgenceName varchar(60),
   urgencePhone varchar(60),
   urgenceEmail varchar(60),
+  registrationDate datetime,
   FOREIGN KEY (grp) REFERENCES Grps (id)
 );
 

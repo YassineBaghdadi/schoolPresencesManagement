@@ -18,4 +18,5 @@ alter table Students
   add column matherMail varchar(60),
   add column urgenceName varchar(60),
   add column urgencePhone varchar(60),
-  add column urgenceEmail varchar(60) ;
+  add column urgenceEmail varchar(60),
+  add column registrationDate datetime;
